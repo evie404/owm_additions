@@ -36,7 +36,9 @@ class OWM_ADD_DevFindFrequentBones(bpy.types.Operator):
 
     def execute(self, context: Context) -> Set[str]:
         # TODO: exclude base bones
-        frequent_bones = find_frequent_bones(0.9) - all_common_bones()
+        threshold = context.scene.owm_additions_dev_props.bone_frequency_threshold
+
+        frequent_bones = find_frequent_bones(threshold) - all_common_bones()
 
         print(f"frequent_bones: {set_to_dict(frequent_bones)}")
 
