@@ -16,6 +16,7 @@ from .dev.dev_allow_select_armatures_only import OWM_ADD_Dev_Allow_Select_Armatu
 from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
 from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
 from .hero_skins import HERO_SKINS
+from .op_import_skin import OWM_ADD_ImportSkin
 from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
@@ -43,6 +44,8 @@ class OWM_ADD_PT_PanelUI(bpy.types.Panel):
 
         self._draw_hero_search(col, context)
         self._draw_skin_search(col, context)
+
+        col.operator(OWM_ADD_ImportSkin.bl_idname, icon="IMPORT")
 
         col.operator(
             OWM_ADD_UpdateArmature.bl_idname,

@@ -6,6 +6,7 @@ import bpy
 from bpy.types import Context
 
 from ..hero_skins_prop import get_context_hero_name
+from ..paths import entity_paths
 
 
 class OWM_ADD_DevImportAllSkins(bpy.types.Operator):
@@ -25,46 +26,7 @@ class OWM_ADD_DevImportAllSkins(bpy.types.Operator):
 
 
 def import_all_skins(hero: str) -> None:
-    skin_search_path = os.path.join(
-        "D:",
-        os.sep,
-        "Game Extracts",
-        "Overwatch",
-        "Heroes",
-        hero,
-        "Skin",
-        "*",
-        "*",
-        "Entities",
-        "HeroGallery",
-        "HeroGallery.owentity",
-    )
-
-    # print(f"skin_search_path: {skin_search_path}")
-
-    skin_paths: List[str] = glob.glob(skin_search_path)
-
-    skin_search_path = os.path.join(
-        "D:",
-        os.sep,
-        "Game Extracts",
-        "Overwatch",
-        "Heroes",
-        hero,
-        "Skin",
-        "*",
-        "*",
-        "*",
-        "Entities",
-        "HeroGallery",
-        "HeroGallery.owentity",
-    )
-
-    # print(f"skin_search_path: {skin_search_path}")
-
-    skin_paths += glob.glob(skin_search_path)
-
-    # print(skin_paths)
+    skin_paths: List[str] = entity_paths(hero, "*")
 
     for skin_path in skin_paths:
         bpy.ops.import_mesh.overtools_entity(

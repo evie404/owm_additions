@@ -67,6 +67,7 @@ def all_classes() -> List[Type]:
     from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
     from .dev.dev_prop import OWM_ADD_Dev_Props
     from .hero_skins_prop import OWM_Hero_Skin
+    from .op_import_skin import OWM_ADD_ImportSkin
     from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
     from .ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
 
@@ -76,6 +77,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Props,
         OWM_ADD_UpdateArmature,
         OWM_ADD_Organize_Hero_Objects,
+        OWM_ADD_ImportSkin,
         OWM_ADD_DevImportAllSkins,
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
