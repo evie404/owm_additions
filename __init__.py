@@ -70,6 +70,7 @@ def all_classes() -> List[Type]:
     from owm_additions.dev.dev_prop import OWM_ADD_Dev_Props
     from owm_additions.hero_skins_prop import OWM_Hero_Skin
     from owm_additions.op_import_skin import OWM_ADD_ImportSkin
+    from owm_additions.op_import_victory_pose import OWM_ADD_ImportVictoryPose
     from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
     from owm_additions.ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
 
@@ -80,6 +81,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_UpdateArmature,
         OWM_ADD_Organize_Hero_Objects,
         OWM_ADD_ImportSkin,
+        OWM_ADD_ImportVictoryPose,
         OWM_ADD_DevImportAllSkins,
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
@@ -117,6 +119,9 @@ def register():
     IDStore.owm_additions_skin_options = bpy.props.CollectionProperty(
         type=OWM_ADD_NameProp
     )
+    IDStore.owm_additions_victory_pose_options = bpy.props.CollectionProperty(
+        type=OWM_ADD_NameProp
+    )
 
 
 def unregister():
@@ -130,6 +135,7 @@ def unregister():
     IDStore = bpy.types.WindowManager
     del IDStore.owm_additions_hero_options
     del IDStore.owm_additions_skin_options
+    del IDStore.owm_additions_victory_pose_options
 
 
 if __name__ == "__main__":

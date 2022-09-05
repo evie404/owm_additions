@@ -1,5 +1,3 @@
-import glob
-import os
 from typing import List, Set
 
 import bpy
