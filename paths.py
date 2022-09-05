@@ -18,32 +18,23 @@ def list_all_heroes(base_path: str = BASE_PATH) -> List[str]:
 
 
 def list_all_skins_of_hero(hero: str, base_path: str = BASE_PATH) -> List[str]:
-    skins: List[str] = []
+    skins: Set[str] = set()
+    skins_list: List[str] = []
 
-    prefix = os.path.join(base_path, "Heroes", hero, "Skin") + os.sep
-    suffix = os.sep + os.path.join(
-        "Entities",
-        "HeroGallery",
-        "HeroGallery.owentity",
-    )
+    skin_paths: List[str] = entity_paths(hero, "*", base_path)
 
-    no_rarity_paths: List[str] = glob.glob(f"{prefix}*{os.sep}*{suffix}")
+    for skin_path in skin_paths:
+        skins.add(path_element_before(skin_path, "Entities"))
 
-    skins = [
-        skin.replace(prefix, "").replace(suffix, "").split(os.sep)[-1]
-        for skin in no_rarity_paths
-    ]
+    skins_list = list(skins)
+    skins_list.sort()
 
-    rarity_paths: List[str] = glob.glob(f"{prefix}*{os.sep}*{os.sep}*{suffix}")
+    return skins_list
 
-    skins += [
-        skin.replace(prefix, "").replace(suffix, "").split(os.sep)[-1]
-        for skin in rarity_paths
-    ]
 
-    skins.sort()
-
-    return skins
+def path_element_before(full_path: str, el: str) -> str:
+    parts = Path(full_path).parts
+    return parts[parts.index(el) - 1]
 
 
 def list_all_victory_poses_of_hero(
@@ -57,8 +48,7 @@ def list_all_victory_poses_of_hero(
     )
 
     for victory_pose_path in victory_pose_paths:
-        parts = Path(victory_pose_path).parts
-        victory_poses.add(parts[parts.index("Animations") - 1])
+        victory_poses.add(path_element_before(victory_pose_path, "Animations"))
 
     victory_poses_list = list(victory_poses)
     victory_poses_list.sort()
@@ -102,10 +92,10 @@ def sanitize_name(name: str) -> str:
     return name.replace(": 76", "_ 76").replace(": 1776", "_ 1776")
 
 
-def entity_paths(hero: str, skin: str) -> List[str]:
+def entity_paths(hero: str, skin: str, base_path: str = BASE_PATH) -> List[str]:
     entity_paths: List[str] = []
 
-    for skin_search_path in skin_search_paths(hero, skin):
+    for skin_search_path in skin_search_paths(hero, skin, base_path):
         entity_paths += glob.glob(skin_search_path)
 
     return entity_paths
@@ -168,8 +158,9 @@ def skin_search_paths(
 
 
 def main() -> None:
-    # print(list_all_skins())
-    print(entity_paths("Mercy", "*"))
+    print(list_all_skins())
+    # print(entity_paths("Mercy", "*"))
+    # print(list_all_victory_poses())
 
 
 if __name__ == "__main__":
