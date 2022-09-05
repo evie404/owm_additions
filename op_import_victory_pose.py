@@ -1,6 +1,6 @@
 import os
 from dataclasses import dataclass
-from typing import List, Set, Tuple
+from typing import Callable, List, Set, Tuple
 
 import bpy
 from bpy.types import Action, Context
@@ -13,10 +13,11 @@ from owm_additions.hero_skins_prop import (
 from owm_additions.paths.animation import VICTORY_POSE_ANIMATION_TYPE, animation_paths
 
 
-class OWM_ADD_ImportVictoryPose(bpy.types.Operator):
-    bl_idname = "owm_add.import_victory_pose"
-    bl_label = "Import Victory Pose"
+class OWM_ADD_ImportAnimationBase(bpy.types.Operator):
     bl_options = {"UNDO"}
+
+    animation_type: str
+    get_animation_name: Callable[[Context], str]
 
     def execute(self, context: Context) -> Set[str]:
         if not bpy.context.active_object:
@@ -42,11 +43,9 @@ class OWM_ADD_ImportVictoryPose(bpy.types.Operator):
             return {"CANCELLED"}
 
         hero = get_context_hero_name(context)
-        animation_name = get_context_victory_pose_name(context)
+        animation_name = self.get_animation_name(context)
 
-        import_set_hero_animations(
-            context, hero, VICTORY_POSE_ANIMATION_TYPE, animation_name
-        )
+        import_set_hero_animations(context, hero, self.animation_type, animation_name)
 
         self.report({"INFO"}, f"Finished import {hero} ({animation_name}).")
 
@@ -61,6 +60,16 @@ class OWM_ADD_ImportVictoryPose(bpy.types.Operator):
             and "owm.skeleton.model" in context.active_object.keys()
             and "owm.skeleton.name" in context.active_object.keys()
         )
+
+
+class OWM_ADD_ImportVictoryPose(OWM_ADD_ImportAnimationBase):
+    bl_idname = "owm_add.import_victory_pose"
+    bl_label = "Import Victory Pose"
+
+    animation_type = VICTORY_POSE_ANIMATION_TYPE
+
+    def get_animation_name(self, context: Context) -> str:
+        return get_context_victory_pose_name(context)
 
 
 def import_set_hero_animations(
