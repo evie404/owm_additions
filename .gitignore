@@ -127,3 +127,20 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# blender stubs
+aud/
+bgl/
+bl_math/
+blf/
+bmesh/
+bpy/
+bpy_extras/
+freestyle/
+gpu/
+gpu_extras/
+idprop/
+imbuf/
+mathutils/
+
+release/*.zip
