@@ -13,6 +13,9 @@ bl_info = {
     "category": "Import-Export",
 }
 
+import bpy
+
+
 # Script reloading (if the user calls 'Reload Scripts' from Blender)
 # https://github.com/KhronosGroup/glTF-Blender-IO/blob/04e26bef903543d08947c5a9a5fea4e787b68f17/addons/io_scene_gltf2/__init__.py#L32-L54
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -75,8 +78,6 @@ def all_classes() -> List[Type]:
 
 
 def register():
-    import bpy
-
     for cls in all_classes():
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
@@ -94,8 +95,6 @@ def register():
 
 
 def unregister():
-    import bpy
-
     for cls in all_classes():
         print(f"unregistering {cls}...")
         bpy.utils.unregister_class(cls)
