@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import List, Set
 
 import bpy
-from bpy.types import Context
+from bpy.types import Action, Context
 from io_anim_seanim import import_seanim
 
 from owm_additions.hero_skins_prop import (
@@ -57,13 +57,44 @@ class OWM_ADD_ImportVictoryPose(bpy.types.Operator):
 
         victory_pose_paths = animation_paths(hero, victory_pose)
 
+        actions: List[Action] = []
+
+        hero_actions: List[Action] = []
+        misc_actions: List[Action] = []
+
         # fuck this
-        filename = victory_pose_paths[0]
+        for filename in victory_pose_paths:
+            jank_file = JankFile(os.path.basename(filename))
+            jank_files = JankFiles([jank_file])
 
-        jank_file = JankFile(os.path.basename(filename))
-        jank_files = JankFiles([jank_file])
+            import_seanim.load(jank_files, context, filename)
 
-        import_seanim.load(jank_files, context, filename)
+            action: Action = bpy.context.active_object.animation_data.action
+            if len(action.fcurves) > 200:
+                hero_actions.append(action)
+            else:
+                misc_actions.append(action)
+
+        if len(hero_actions) > 0:
+            bpy.context.active_object.animation_data.action = None
+
+            bpy.ops.pose.reveal()
+            bpy.ops.pose.reveal()
+            bpy.ops.pose.select_all()
+            bpy.ops.pose.transforms_clear()
+
+            bpy.context.active_object.animation_data.action = hero_actions[0]
+
+        for hero_action in hero_actions:
+            name = f"{hero} - {victory_pose}"
+
+            if len(misc_actions) > 0:
+                name = name + " (Hero)"
+
+            hero_action.name = name
+
+        for misc_action in misc_actions:
+            misc_action.name = f"{hero} - {victory_pose} (Misc)"
 
         self.report({"INFO"}, f"Finished import {hero} ({victory_pose}).")
 
