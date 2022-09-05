@@ -1,6 +1,7 @@
 import bpy
 from bpy.types import Context, UILayout
 
+from ..importing.assets import HERO_SKINS
 from .op_dev_allow_select_armatures_only import OWM_ADD_Dev_Allow_Select_Armatures_Only
 from .op_dev_find_common_bones import (
     OWM_ADD_DevFindCommonBones,
@@ -97,6 +98,7 @@ class OWM_ADD_PT_DevPanel(bpy.types.Panel):
 
         col.separator()
 
+        self._draw_hero_search(col, context)
         col.operator(OWM_ADD_DevImportAllSkins.bl_idname, icon="IMPORT")
 
         col.separator()
@@ -108,6 +110,21 @@ class OWM_ADD_PT_DevPanel(bpy.types.Panel):
 
         col.operator("script.reload", icon="FILE_REFRESH")
 
+    # TODO: reuse
+    def _draw_hero_search(self, col: UILayout, context: Context) -> None:
+        id_store = bpy.context.window_manager
+        owm_additions_hero_options = id_store.owm_additions_hero_options
 
-# bpy.utils.register_class(OWN_ADD_BasePanel)
-# bpy.utils.register_class(OWM_ADD_PT_ImportPanel)
+        owm_additions_hero_options.clear()
+
+        for name in sorted(HERO_SKINS.keys()):
+            item = owm_additions_hero_options.add()
+            item.name = name
+
+        col.prop_search(
+            context.scene.owm_additions_import_assets,
+            "hero",
+            id_store,
+            "owm_additions_hero_options",
+            text="Hero",
+        )
