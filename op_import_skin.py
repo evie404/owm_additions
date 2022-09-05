@@ -6,7 +6,7 @@ import bpy
 from bpy.types import Context
 
 from .hero_skins_prop import get_context_hero_name, get_context_skin_name
-from .paths import entity_paths
+from .paths.skin import entity_paths
 
 
 class OWM_ADD_ImportSkin(bpy.types.Operator):
