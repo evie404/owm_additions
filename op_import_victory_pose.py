@@ -7,10 +7,17 @@ from bpy.types import Action, Context
 from io_anim_seanim import import_seanim
 
 from owm_additions.hero_skins_prop import (
+    get_context_emote_name,
     get_context_hero_name,
+    get_context_highlight_intro_name,
     get_context_victory_pose_name,
 )
-from owm_additions.paths.animation import VICTORY_POSE_ANIMATION_TYPE, animation_paths
+from owm_additions.paths.animation import (
+    EMOTE_ANIMATION_TYPE,
+    HIGHLIGHT_INTRO_ANIMATION_TYPE,
+    VICTORY_POSE_ANIMATION_TYPE,
+    animation_paths,
+)
 
 
 class OWM_ADD_ImportAnimationBase(bpy.types.Operator):
@@ -70,6 +77,26 @@ class OWM_ADD_ImportVictoryPose(OWM_ADD_ImportAnimationBase):
 
     def get_animation_name(self, context: Context) -> str:
         return get_context_victory_pose_name(context)
+
+
+class OWM_ADD_ImportHighlightIntro(OWM_ADD_ImportAnimationBase):
+    bl_idname = "owm_add.import_highlight_intro"
+    bl_label = "Import Highlight Intro"
+
+    animation_type = HIGHLIGHT_INTRO_ANIMATION_TYPE
+
+    def get_animation_name(self, context: Context) -> str:
+        return get_context_highlight_intro_name(context)
+
+
+class OWM_ADD_ImportEmote(OWM_ADD_ImportAnimationBase):
+    bl_idname = "owm_add.import_emote"
+    bl_label = "Import Emote"
+
+    animation_type = EMOTE_ANIMATION_TYPE
+
+    def get_animation_name(self, context: Context) -> str:
+        return get_context_emote_name(context)
 
 
 def import_set_hero_animations(

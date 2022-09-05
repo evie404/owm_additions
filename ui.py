@@ -19,9 +19,18 @@ from owm_additions.dev.dev_allow_select_armatures_only import (
 )
 from owm_additions.dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
 from owm_additions.dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
-from owm_additions.hero_skins import HERO_SKINS, HERO_VICTORY_POSES
+from owm_additions.hero_skins import (
+    HERO_EMOTES,
+    HERO_HIGHLIGHT_INTROS,
+    HERO_SKINS,
+    HERO_VICTORY_POSES,
+)
 from owm_additions.op_import_skin import OWM_ADD_ImportSkin
-from owm_additions.op_import_victory_pose import OWM_ADD_ImportVictoryPose
+from owm_additions.op_import_victory_pose import (
+    OWM_ADD_ImportEmote,
+    OWM_ADD_ImportHighlightIntro,
+    OWM_ADD_ImportVictoryPose,
+)
 from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
@@ -49,12 +58,16 @@ class OWM_ADD_PT_PanelUI(bpy.types.Panel):
 
         self._draw_hero_search(col, context)
         self._draw_skin_search(col, context)
-
         col.operator(OWM_ADD_ImportSkin.bl_idname, icon="IMPORT")
 
         self._draw_victory_pose_search(col, context)
-
         col.operator(OWM_ADD_ImportVictoryPose.bl_idname, icon="IMPORT")
+
+        self._draw_highlight_intro_search(col, context)
+        col.operator(OWM_ADD_ImportHighlightIntro.bl_idname, icon="IMPORT")
+
+        self._draw_emote_search(col, context)
+        col.operator(OWM_ADD_ImportEmote.bl_idname, icon="IMPORT")
 
         col.operator(
             OWM_ADD_UpdateArmature.bl_idname,
@@ -124,6 +137,50 @@ class OWM_ADD_PT_PanelUI(bpy.types.Panel):
             id_store,
             "owm_additions_victory_pose_options",
             text="Victory Pose",
+        )
+
+    def _draw_highlight_intro_search(self, col: UILayout, context: Context) -> None:
+        id_store = bpy.context.window_manager
+        owm_additions_highlight_intro_options = (
+            id_store.owm_additions_highlight_intro_options
+        )
+
+        owm_additions_highlight_intro_options.clear()
+
+        hero = context.scene.owm_additions_hero_skin.hero
+        highlight_intros = HERO_HIGHLIGHT_INTROS.get(hero, [])
+
+        for name in highlight_intros:
+            item = owm_additions_highlight_intro_options.add()
+            item.name = name
+
+        col.prop_search(
+            context.scene.owm_additions_hero_skin,
+            "highlight_intro",
+            id_store,
+            "owm_additions_highlight_intro_options",
+            text="Highlight Intro",
+        )
+
+    def _draw_emote_search(self, col: UILayout, context: Context) -> None:
+        id_store = bpy.context.window_manager
+        owm_additions_emote_options = id_store.owm_additions_emote_options
+
+        owm_additions_emote_options.clear()
+
+        hero = context.scene.owm_additions_hero_skin.hero
+        emotes = HERO_EMOTES.get(hero, [])
+
+        for name in emotes:
+            item = owm_additions_emote_options.add()
+            item.name = name
+
+        col.prop_search(
+            context.scene.owm_additions_hero_skin,
+            "emote",
+            id_store,
+            "owm_additions_emote_options",
+            text="Emote",
         )
 
 

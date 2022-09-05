@@ -1,5 +1,10 @@
 from typing import List, Type
 
+from owm_additions.op_import_victory_pose import (
+    OWM_ADD_ImportEmote,
+    OWM_ADD_ImportHighlightIntro,
+)
+
 bl_info = {
     "name": "OWM Additions",
     "author": "SushiKitty",
@@ -82,6 +87,8 @@ def all_classes() -> List[Type]:
         OWM_ADD_Organize_Hero_Objects,
         OWM_ADD_ImportSkin,
         OWM_ADD_ImportVictoryPose,
+        OWM_ADD_ImportHighlightIntro,
+        OWM_ADD_ImportEmote,
         OWM_ADD_DevImportAllSkins,
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
@@ -122,6 +129,12 @@ def register():
     IDStore.owm_additions_victory_pose_options = bpy.props.CollectionProperty(
         type=OWM_ADD_NameProp
     )
+    IDStore.owm_additions_highlight_intro_options = bpy.props.CollectionProperty(
+        type=OWM_ADD_NameProp
+    )
+    IDStore.owm_additions_emote_options = bpy.props.CollectionProperty(
+        type=OWM_ADD_NameProp
+    )
 
 
 def unregister():
@@ -136,6 +149,8 @@ def unregister():
     del IDStore.owm_additions_hero_options
     del IDStore.owm_additions_skin_options
     del IDStore.owm_additions_victory_pose_options
+    del IDStore.owm_additions_highlight_intro_options
+    del IDStore.owm_additions_emote_options
 
 
 if __name__ == "__main__":
