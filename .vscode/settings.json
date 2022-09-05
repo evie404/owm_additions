@@ -9,4 +9,38 @@
       "pythonDiscoveryModule"
     ],
   },
+  "search.exclude": {
+    "**/__pycache__": true,
+    // blender stubs
+    "**/aud": true,
+    "**/bgl": true,
+    "**/bl_math": true,
+    "**/blf": true,
+    "**/bmesh": true,
+    "**/bpy": true,
+    "**/bpy_extras": true,
+    "**/freestyle": true,
+    "**/gpu": true,
+    "**/gpu_extras": true,
+    "**/idprop": true,
+    "**/imbuf": true,
+    "**/mathutils": true
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    // blender stubs
+    "**/aud": true,
+    "**/bgl": true,
+    "**/bl_math": true,
+    "**/blf": true,
+    "**/bmesh": true,
+    "**/bpy": true,
+    "**/bpy_extras": true,
+    "**/freestyle": true,
+    "**/gpu": true,
+    "**/gpu_extras": true,
+    "**/idprop": true,
+    "**/imbuf": true,
+    "**/mathutils": true
+  },
 }
