@@ -97,13 +97,20 @@ class OWM_ADD_DevPanelUI(bpy.types.Panel):
             OWM_ADD_Dev_Allow_Select_Armatures_Only.bl_idname, icon="RESTRICT_SELECT_ON"
         )
 
-        col.prop_search(
-            context.scene.owm_additions_dev_props,
-            "bone_to_show",
-            context.object.pose,
-            "bones",
-            text="Bone to Show",
-        )
+        if context.object and context.object.pose:
+            col.prop_search(
+                context.scene.owm_additions_dev_props,
+                "bone_to_show",
+                context.object.pose,
+                "bones",
+                text="Bone to Show",
+            )
+        else:
+            col.prop(
+                context.scene.owm_additions_dev_props,
+                "bone_to_show",
+                text="Bone to Show",
+            )
 
         col.operator(OWM_ADD_Dev_Hide_All_Bones_Except.bl_idname, icon="BONE_DATA")
 
