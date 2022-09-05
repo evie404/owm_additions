@@ -49,6 +49,10 @@ if "bpy" in locals():
 
 
 def all_classes() -> List[Type]:
+    from .bones.dev_find_common_bones import (
+        OWM_ADD_DevFindCommonBones,
+        OWM_ADD_DevFindFrequentBones,
+    )
     from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
     from .bones.dev_print_selected_bones import (
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
@@ -73,6 +77,8 @@ def all_classes() -> List[Type]:
         OWM_ADD_UpdateArmature,
         OWM_ADD_Organize_Hero_Objects,
         OWM_ADD_DevImportAllSkins,
+        OWM_ADD_DevFindCommonBones,
+        OWM_ADD_DevFindFrequentBones,
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
         OWM_ADD_Dev_Hide_All_Bones_Except,
         OWM_ADD_Dev_Hide_All_Empties,

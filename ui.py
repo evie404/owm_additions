@@ -1,6 +1,10 @@
 import bpy
 from bpy.types import Context, UILayout
 
+from .bones.dev_find_common_bones import (
+    OWM_ADD_DevFindCommonBones,
+    OWM_ADD_DevFindFrequentBones,
+)
 from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
 from .bones.dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Dict,
@@ -125,6 +129,16 @@ class OWM_ADD_PT_DevPanelUI(bpy.types.Panel):
         col.operator(
             OWM_ADD_Dev_Print_Selected_Bones_Set.bl_idname,
             icon="CONSOLE",
+        )
+
+        col.operator(
+            OWM_ADD_DevFindCommonBones.bl_idname,
+            icon="BONE_DATA",
+        )
+
+        col.operator(
+            OWM_ADD_DevFindFrequentBones.bl_idname,
+            icon="BONE_DATA",
         )
 
         col.separator()
