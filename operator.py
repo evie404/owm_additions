@@ -1,5 +1,3 @@
-from typing import Optional, Set
-
 import bpy
 from bpy.props import EnumProperty
 from bpy.types import Context
@@ -32,10 +30,6 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
             # ("Pharah", "Pharah", "", 1),
         ],
     )
-
-    def execute(self, context: Context) -> Set[str]:
-        update_bones()
-        return {"FINISHED"}
 
     def execute(self, context: Context):
         if not bpy.context.active_object:
