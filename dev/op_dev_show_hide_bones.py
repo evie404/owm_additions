@@ -56,6 +56,31 @@ class OWM_ADD_Dev_Show_All_Bones(bpy.types.Operator):
         return {"FINISHED"}
 
 
+class OWM_ADD_Dev_Show_Only_Unknown_Bones(bpy.types.Operator):
+    bl_idname = "owm_add.dev_show_only_unknown_bones"
+    bl_label = "Show Only Unknown Bones"
+    # bl_description = "Clear all bones and object transformations"
+
+    def execute(self, context: Context) -> Set[str]:
+        arm_objs = all_armature_objects()
+
+        show_only_unknown_bones(context, arm_objs)
+
+        return {"FINISHED"}
+
+
+def show_only_unknown_bones(context: Context, arm_objs: List[Object]) -> None:
+    for obj in arm_objs:
+        context.view_layer.objects.active = obj
+
+        armature: Armature = obj.data
+
+        for i in range(len(armature.layers)):
+            armature.layers[i] = False
+
+        armature.layers[31] = True
+
+
 def show_all_bones(context: Context, arm_objs: List[Object]) -> None:
     for obj in arm_objs:
         context.view_layer.objects.active = obj

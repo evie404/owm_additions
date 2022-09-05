@@ -63,6 +63,7 @@ def all_classes() -> List[Type]:
     from .dev.op_dev_show_hide_bones import (
         OWM_ADD_Dev_Hide_All_Bones_Except,
         OWM_ADD_Dev_Show_All_Bones,
+        OWM_ADD_Dev_Show_Only_Unknown_Bones,
     )
     from .dev.ui import OWM_ADD_PT_DevPanel
     from .importing.asset_prop import OWM_Asset_Prop
@@ -91,6 +92,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_DevFindFrequentBones,
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
         OWM_ADD_Dev_Show_All_Bones,
+        OWM_ADD_Dev_Show_Only_Unknown_Bones,
         OWM_ADD_Dev_Hide_All_Bones_Except,
         OWM_ADD_Dev_Hide_All_Empties,
         OWM_ADD_Dev_Print_Selected_Bones_Dict,

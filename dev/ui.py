@@ -18,6 +18,7 @@ from .op_dev_print_version import OWM_ADD_PrintVersion
 from .op_dev_show_hide_bones import (
     OWM_ADD_Dev_Hide_All_Bones_Except,
     OWM_ADD_Dev_Show_All_Bones,
+    OWM_ADD_Dev_Show_Only_Unknown_Bones,
 )
 
 
@@ -83,6 +84,7 @@ class OWM_ADD_PT_DevPanel(bpy.types.Panel):
         )
 
         col.operator(OWM_ADD_Dev_Show_All_Bones.bl_idname, icon="BONE_DATA")
+        col.operator(OWM_ADD_Dev_Show_Only_Unknown_Bones.bl_idname, icon="BONE_DATA")
 
         if context.object and context.object.pose:
             col.prop_search(
