@@ -260,10 +260,10 @@ class OWM_ADD_PT_DevPanelUI(bpy.types.Panel):
 
         col.operator(
             OWM_ADD_PrintVersion.bl_idname,
-            icon="BONE_DATA",
+            icon="CONSOLE",
         )
 
-        col.operator("script.reload")
+        col.operator("script.reload", icon="FILE_REFRESH")
 
 
 # bpy.utils.register_class(OWN_ADD_BasePanel)
