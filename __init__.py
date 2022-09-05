@@ -1,8 +1,6 @@
 from operator import mod
 from typing import List, Type
 
-from .dev.ui import OWM_ADD_PT_DevPanel
-
 reloaded = False
 
 if "bpy" in locals():
@@ -63,6 +61,8 @@ def all_classes() -> List[Type]:
     )
     from .dev.op_dev_print_version import OWM_ADD_PrintVersion
     from .dev.op_dev_prop import OWM_ADD_Dev_Props
+    from .dev.op_dev_show_all_bones import OWM_ADD_Dev_Show_All_Bones
+    from .dev.ui import OWM_ADD_PT_DevPanel
     from .importing.asset_prop import OWM_Asset_Prop
     from .importing.op_import_animations import (
         OWM_ADD_ImportEmote,
@@ -88,6 +88,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
+        OWM_ADD_Dev_Show_All_Bones,
         OWM_ADD_Dev_Hide_All_Bones_Except,
         OWM_ADD_Dev_Hide_All_Empties,
         OWM_ADD_Dev_Print_Selected_Bones_Dict,

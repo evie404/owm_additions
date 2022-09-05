@@ -16,6 +16,7 @@ from .op_dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Set,
 )
 from .op_dev_print_version import OWM_ADD_PrintVersion
+from .op_dev_show_all_bones import OWM_ADD_Dev_Show_All_Bones
 
 
 class OWM_ADD_PT_DevPanel(bpy.types.Panel):
@@ -78,6 +79,8 @@ class OWM_ADD_PT_DevPanel(bpy.types.Panel):
         col.operator(
             OWM_ADD_Dev_Allow_Select_Armatures_Only.bl_idname, icon="RESTRICT_SELECT_ON"
         )
+
+        col.operator(OWM_ADD_Dev_Show_All_Bones.bl_idname, icon="BONE_DATA")
 
         if context.object and context.object.pose:
             col.prop_search(
