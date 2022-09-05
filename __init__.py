@@ -45,13 +45,13 @@ def all_classes() -> List[Type]:
     from .hero_skins_prop import OWM_Hero_Skin
     from .bones.operator import OWM_ADD_UpdateArmature
     from .organize_hero_objs import OWM_Organize_Hero_Objects
-    from .ui import OWM_ADD_PT_UpdateArmatureUI
+    from .ui import OWM_ADD_PanelUI
 
     return [
         OWM_Hero_Skin,
         OWM_ADD_UpdateArmature,
         OWM_Organize_Hero_Objects,
-        OWM_ADD_PT_UpdateArmatureUI,
+        OWM_ADD_PanelUI,
     ]
 
 

@@ -5,10 +5,10 @@ from .bones.operator import OWM_ADD_UpdateArmature
 from .organize_hero_objs import OWM_Organize_Hero_Objects
 
 
-class OWM_ADD_PT_UpdateArmatureUI(bpy.types.Panel):
+class OWM_ADD_PanelUI(bpy.types.Panel):
     bl_category = "OWM Additions"
-    bl_label = "Armature Tools"
-    bl_idname = "OWM_ADD_PT_UpdateArmatureUI"
+    bl_label = "Update OWM Imports"
+    bl_idname = "OWM_ADD_PanelUI"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_context = "objectmode"
@@ -47,4 +47,4 @@ class OWM_ADD_PT_UpdateArmatureUI(bpy.types.Panel):
 
 
 # bpy.utils.register_class(OWN_ADD_BasePanel)
-# bpy.utils.register_class(OWM_ADD_PT_UpdateArmatureUI)
+# bpy.utils.register_class(OWM_ADD_PanelUI)
