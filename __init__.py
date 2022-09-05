@@ -1,5 +1,7 @@
 from typing import List, Type
 
+from .ui import OWM_ADD_DevPanelUI
+
 bl_info = {
     "name": "OWM Additions",
     "author": "SushiKitty",
@@ -60,6 +62,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Print_Selected_Bones_List,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
         OWM_ADD_PanelUI,
+        OWM_ADD_DevPanelUI,
     ]
 
 

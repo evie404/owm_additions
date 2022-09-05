@@ -50,19 +50,42 @@ class OWM_ADD_PanelUI(bpy.types.Panel):
             icon="OUTLINER_COLLECTION",
         )
 
+
+class OWM_ADD_DevPanelUI(bpy.types.Panel):
+    bl_category = "OWM Additions"
+    bl_label = "Dev Only"
+    bl_idname = "OWM_ADD_DevPanelUI"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    # bl_context = "objectmode"
+    # bl_options = {"DEFAULT_CLOSED"}
+
+    # @classmethod
+    # def poll(cls, context: Context) -> bool:
+    #     if "owm.skeleton.model" in bpy.context.active_object.keys():
+    #         return True
+
+    #     if "owm.skeleton.name" in bpy.context.active_object.keys():
+    #         return True
+
+    #     return False
+
+    def draw(self, context: Context) -> None:
+        col = self.layout.column()
+
         col.operator(
             OWM_ADD_Dev_Print_Selected_Bones_Dict.bl_idname,
-            icon="OUTLINER_COLLECTION",
+            icon="CONSOLE",
         )
 
         col.operator(
             OWM_ADD_Dev_Print_Selected_Bones_List.bl_idname,
-            icon="OUTLINER_COLLECTION",
+            icon="CONSOLE",
         )
 
         col.operator(
             OWM_ADD_Dev_Print_Selected_Bones_Set.bl_idname,
-            icon="OUTLINER_COLLECTION",
+            icon="CONSOLE",
         )
 
 
