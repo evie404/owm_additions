@@ -46,6 +46,17 @@ def list_all_victory_poses(base_path: str = BASE_PATH) -> Dict[str, List[str]]:
     return all_victory_poses
 
 
+def animation_paths(hero: str, skin: str, base_path: str = BASE_PATH) -> List[str]:
+    animation_paths: List[str] = []
+    animation_search_path: str = victory_pose_animations_search_path(
+        hero, skin, base_path
+    )
+
+    animation_paths += glob.glob(animation_search_path)
+
+    return animation_paths
+
+
 def victory_pose_search_path(
     hero: str,
     victory_pose: str,
@@ -70,8 +81,8 @@ def victory_pose_animations_search_path(
 
 
 def main() -> None:
-    print(list_all_victory_poses())
-    # print(entity_paths("Mercy", "*"))
+    # print(list_all_victory_poses())
+    print(animation_paths("Mercy", "Toast"))
     # print(list_all_victory_poses())
 
 
