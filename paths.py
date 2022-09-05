@@ -134,36 +134,43 @@ def victory_pose_animations_search_path(
     )
 
 
+def skin_search_path(
+    hero: str,
+    skin: str,
+    has_rarity: bool = True,
+    base_path: str = BASE_PATH,
+) -> str:
+    hero_path = sanitize_name(hero)
+    skin_path = sanitize_name(skin)
+
+    return os.path.join(
+        base_path,
+        "Heroes",
+        hero_path,
+        "Skin",
+        *(("*", "*") if has_rarity else ("*")),
+        skin_path,
+        "Entities",
+        "HeroGallery",
+        "HeroGallery.owentity",
+    )
+
+
 def skin_search_paths(
     hero: str,
     skin: str,
     base_path: str = BASE_PATH,
 ) -> List[str]:
-    hero_path = sanitize_name(hero)
-    skin_path = sanitize_name(skin)
-
     return [
-        os.path.join(
-            base_path,
-            "Heroes",
-            hero_path,
-            "Skin",
-            "*",
-            skin_path,
-            "Entities",
-            "HeroGallery",
-            "HeroGallery.owentity",
-        ),
-        os.path.join(
-            base_path,
-            "Heroes",
-            hero_path,
-            "Skin",
-            "*",
-            "*",
-            skin_path,
-            "Entities",
-            "HeroGallery",
-            "HeroGallery.owentity",
-        ),
+        skin_search_path(hero, skin, has_rarity=False, base_path=base_path),
+        skin_search_path(hero, skin, has_rarity=True, base_path=base_path),
     ]
+
+
+def main() -> None:
+    # print(list_all_skins())
+    print(entity_paths("Mercy", "*"))
+
+
+if __name__ == "__main__":
+    main()
