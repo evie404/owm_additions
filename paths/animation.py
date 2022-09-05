@@ -19,7 +19,7 @@ EMOTE_ANIMATION_TYPE = "Emote"
 
 def list_all_animations_of_hero(
     hero: str, animation_type: str, base_path: str = BASE_PATH
-) -> Dict[str, List[str]]:
+) -> List[str]:
     animations: Set[str] = set()
     animations_list: List[str] = []
 
