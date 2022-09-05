@@ -1,5 +1,5 @@
 import bpy
-from bpy.types import Context
+from bpy.types import Context, UILayout
 
 from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
 from .bones.dev_print_selected_bones import (
@@ -10,6 +10,7 @@ from .bones.dev_print_selected_bones import (
 from .bones.operator import OWM_ADD_UpdateArmature
 from .dev.dev_allow_select_armatures_only import OWM_ADD_Dev_Allow_Select_Armatures_Only
 from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+from .hero_skins import HERO_SKINS
 from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
@@ -35,13 +36,8 @@ class OWM_ADD_PT_PanelUI(bpy.types.Panel):
     def draw(self, context: Context) -> None:
         col = self.layout.column()
 
-        col.prop(
-            context.scene.owm_additions_hero_skin,
-            "hero",
-            text="Hero",
-        )
-
-        col.prop(context.scene.owm_additions_hero_skin, "skin", text="Skin")
+        self._draw_hero_search(col, context)
+        self._draw_skin_search(col, context)
 
         col.operator(
             OWM_ADD_UpdateArmature.bl_idname,
@@ -51,6 +47,45 @@ class OWM_ADD_PT_PanelUI(bpy.types.Panel):
         col.operator(
             OWM_ADD_Organize_Hero_Objects.bl_idname,
             icon="OUTLINER_COLLECTION",
+        )
+
+    def _draw_hero_search(self, col: UILayout, context: Context) -> None:
+        id_store = bpy.context.window_manager
+        owm_additions_hero_options = id_store.owm_additions_hero_options
+
+        owm_additions_hero_options.clear()
+
+        for name in sorted(HERO_SKINS.keys()):
+            item = owm_additions_hero_options.add()
+            item.name = name
+
+        col.prop_search(
+            context.scene.owm_additions_hero_skin,
+            "hero",
+            id_store,
+            "owm_additions_hero_options",
+            text="Hero",
+        )
+
+    def _draw_skin_search(self, col: UILayout, context: Context) -> None:
+        id_store = bpy.context.window_manager
+        owm_additions_skin_options = id_store.owm_additions_skin_options
+
+        owm_additions_skin_options.clear()
+
+        hero = context.scene.owm_additions_hero_skin.hero
+        skins = HERO_SKINS.get(hero, [])
+
+        for name in skins:
+            item = owm_additions_skin_options.add()
+            item.name = name
+
+        col.prop_search(
+            context.scene.owm_additions_hero_skin,
+            "skin",
+            id_store,
+            "owm_additions_skin_options",
+            text="Skin",
         )
 
 

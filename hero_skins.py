@@ -759,25 +759,3 @@ HERO_SKINS: Dict[str, List[str]] = {
         "Zhuge Liang",
     ],
 }
-
-HERO_UNICODED: Dict[str, str] = {"Lcio": "Lúcio", "Torbjrn": "Torbjörn"}
-
-SKIN_UNICODED: Dict[str, str] = {
-    "Vyolt": "Vyolèt",
-    "Vt": "Vèt",
-    "Bl": "Blå",
-    "Grn": "Grön",
-    "Mni": "Máni",
-    "Rd": "Röd",
-    "Sl": "Sól",
-    "Jtunn": "Jötunn",
-    "Kygisha": "Kyōgisha",
-    "Seleo": "Seleção",
-    "Sigrn": "Sigrún",
-    "ireannach": "Éireannach",
-    "L Bu": "Lü Bu",
-    "Azcar": "Azúcar",
-    "Cybjrn": "Cybjörn",
-    "Cte d'Azur": "Côte d'Azur",
-    "Lcioball": "Lúcioball",
-}

@@ -16,6 +16,10 @@ bl_info = {
 import bpy
 
 
+class OWM_ADD_NameProp(bpy.types.PropertyGroup):
+    name: bpy.props.StringProperty()
+
+
 # Script reloading (if the user calls 'Reload Scripts' from Blender)
 # https://github.com/KhronosGroup/glTF-Blender-IO/blob/04e26bef903543d08947c5a9a5fea4e787b68f17/addons/io_scene_gltf2/__init__.py#L32-L54
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -62,6 +66,7 @@ def all_classes() -> List[Type]:
     from .ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
 
     return [
+        OWM_ADD_NameProp,
         OWM_Hero_Skin,
         OWM_ADD_Dev_Props,
         OWM_ADD_UpdateArmature,
@@ -93,6 +98,14 @@ def register():
         type=OWM_ADD_Dev_Props
     )
 
+    IDStore = bpy.types.WindowManager
+    IDStore.owm_additions_hero_options = bpy.props.CollectionProperty(
+        type=OWM_ADD_NameProp
+    )
+    IDStore.owm_additions_skin_options = bpy.props.CollectionProperty(
+        type=OWM_ADD_NameProp
+    )
+
 
 def unregister():
     for cls in all_classes():
@@ -101,6 +114,10 @@ def unregister():
 
     del bpy.types.Scene.owm_additions_hero_skin
     del bpy.types.Scene.owm_additions_dev_props
+
+    IDStore = bpy.types.WindowManager
+    del IDStore.owm_additions_hero_options
+    del IDStore.owm_additions_skin_options
 
 
 if __name__ == "__main__":
