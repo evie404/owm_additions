@@ -2,12 +2,9 @@ from typing import Dict, Optional, Tuple
 
 from bpy.types import Armature, EditBone
 
+from .mappings.base import BASE_BONE_GROUP_MAPPINGS
 from .mappings.bone_group_mapping import BoneGroupMapping
-from .mappings.mappings import (
-    BASE_BONE_GROUP_MAPPINGS,
-    get_hero_base_bone_mapping,
-    get_skin_bone_mapping,
-)
+from .mappings.mappings import get_hero_base_bone_mapping, get_skin_bone_mapping
 
 
 def clear_bone_layers(armature: Armature) -> None:

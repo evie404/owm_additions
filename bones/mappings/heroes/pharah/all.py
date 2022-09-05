@@ -1,6 +1,6 @@
 from typing import Dict
 
-from ...mappings.bone_group_mapping import BoneGroupMapping
+from ...bone_group_mapping import BoneGroupMapping
 from .base import BASE_MAPPING
 from .classic import CLASSIC_MAPPING
 from .qinglong import QINGLONG_MAPPING

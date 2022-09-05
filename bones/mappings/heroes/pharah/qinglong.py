@@ -1,6 +1,6 @@
 from typing import Dict
 
-from ...mappings.bone_group_mapping import BoneGroupMapping
+from ...bone_group_mapping import BoneGroupMapping
 
 QINGLONG_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
     "Qinglong": {
