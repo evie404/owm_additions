@@ -100,11 +100,14 @@ def update_skin_selection(self, context: Context) -> None:
     context.scene.owm_additions_hero_skin.skin = None
 
 
+HERO_ENUMS = [
+    # id, name, desc, idx
+    (owm_addition_hero_option(hero), hero, "", i)
+    for i, hero in enumerate(HERO_SKINS.keys())
+]
+
+
 class OWM_Hero_Skin(bpy.types.PropertyGroup):
-    heroes = [
-        (owm_addition_hero_option(hero), hero, "", hero, i)
-        for i, hero in enumerate(HERO_SKINS.keys())
-    ]
 
     # TODO: reset skin when hero changes
     skin: EnumProperty(
@@ -116,7 +119,7 @@ class OWM_Hero_Skin(bpy.types.PropertyGroup):
 
     hero: bpy.props.EnumProperty(
         # update=update_skin_selection,
-        items=heroes,
+        items=HERO_ENUMS,
         # description="",
         # default=f"owm_additions.hero.{HERO_NAMES[0]}",
         # update=execute_operator,
