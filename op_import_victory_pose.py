@@ -3,17 +3,21 @@ from dataclasses import dataclass
 from typing import Callable, Dict, List, Set, Tuple
 
 import bpy
-from bpy.types import Action, Context
+from bpy.types import Action, Context, FCurve
 from io_anim_seanim import import_seanim
 
-from owm_additions.hero_skins_prop import (get_context_emote_name,
-                                           get_context_hero_name,
-                                           get_context_highlight_intro_name,
-                                           get_context_victory_pose_name)
-from owm_additions.paths.animation import (EMOTE_ANIMATION_TYPE,
-                                           HIGHLIGHT_INTRO_ANIMATION_TYPE,
-                                           VICTORY_POSE_ANIMATION_TYPE,
-                                           animation_paths_by_priority)
+from owm_additions.hero_skins_prop import (
+    get_context_emote_name,
+    get_context_hero_name,
+    get_context_highlight_intro_name,
+    get_context_victory_pose_name,
+)
+from owm_additions.paths.animation import (
+    EMOTE_ANIMATION_TYPE,
+    HIGHLIGHT_INTRO_ANIMATION_TYPE,
+    VICTORY_POSE_ANIMATION_TYPE,
+    animation_paths_by_priority,
+)
 
 
 class OWM_ADD_ImportAnimationBase(bpy.types.Operator):
@@ -124,32 +128,29 @@ def import_set_hero_animations(
 
     # set to action with lowest priority and highest frames
     longest_action = actions_by_priority[priorities[0]][0]
+    longest_action_complexity = complexity_of_action(longest_action)
 
     for action in actions_by_priority[priorities[0]]:
-        if (action.frame_range[1] - action.frame_range[0]) > (
-            longest_action.frame_range[1] - longest_action.frame_range[0]
-        ):
+        action_complexity = complexity_of_action(action)
+
+        if action_complexity > longest_action_complexity:
             longest_action = action
+            longest_action_complexity = action_complexity
 
     set_action(context, longest_action)
 
-    # if len(actions) > 0:
-    #     set_action(context, actions[0])
-
     return
 
-    hero_actions, _ = group_and_rename_actions(hero, animation_name, actions)
 
-    if len(hero_actions) > 0:
-        longest_hero_action = hero_actions[0]
+def complexity_of_action(action: Action) -> int:
+    # return len(action.fcurves)
+    total = 0
 
-        for action in hero_actions:
-            if (action.frame_range[1] - action.frame_range[0]) > (
-                longest_hero_action.frame_range[1] - longest_hero_action.frame_range[0]
-            ):
-                longest_hero_action = action
+    for fcurve in action.fcurves:
+        fcurve: FCurve
+        total += len(fcurve.keyframe_points)
 
-        set_action(context, longest_hero_action)
+    return total
 
 
 def group_and_rename_actions(
