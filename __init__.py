@@ -1,5 +1,6 @@
 from typing import List, Type
 
+from owm_additions.dev.dev_print_version import OWM_ADD_PrintVersion
 from owm_additions.op_import_victory_pose import (
     OWM_ADD_ImportEmote,
     OWM_ADD_ImportHighlightIntro,
@@ -98,6 +99,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
+        OWM_ADD_PrintVersion,
         OWM_ADD_PT_PanelUI,
         OWM_ADD_PT_DevPanelUI,
     ]
