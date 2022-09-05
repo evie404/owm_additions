@@ -14,7 +14,7 @@ class OWM_ADD_DevFindCommonBones(bpy.types.Operator):
         # TODO: exclude base bones
         common_bones = find_common_bones() - all_common_bones()
 
-        print(f"common_bones: {common_bones}")
+        print(f"common_bones: {set_to_dict(common_bones)}")
 
         return {"FINISHED"}
 
@@ -39,7 +39,7 @@ class OWM_ADD_DevFindFrequentBones(bpy.types.Operator):
         # TODO: exclude base bones
         frequent_bones = find_frequent_bones(0.9) - all_common_bones()
 
-        print(f"frequent_bones: {frequent_bones}")
+        print(f"frequent_bones: {set_to_dict(frequent_bones)}")
 
         return {"FINISHED"}
 
@@ -106,3 +106,12 @@ def find_common_bones() -> Set[str]:
     # print(f"common_bones: {common_bones}")
 
     return common_bones
+
+
+def set_to_dict(s: Set[str]) -> Dict[str, str]:
+    d: Dict[str, str] = {}
+
+    for item in s:
+        d[item] = ""
+
+    return d
