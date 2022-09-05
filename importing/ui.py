@@ -1,46 +1,41 @@
 import bpy
 from bpy.types import Context, UILayout
 
-from .bones.dev_find_common_bones import (OWM_ADD_DevFindCommonBones,
-                                          OWM_ADD_DevFindFrequentBones)
-from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
-from .bones.dev_print_selected_bones import (
+from ..bones.dev_find_common_bones import (
+    OWM_ADD_DevFindCommonBones,
+    OWM_ADD_DevFindFrequentBones,
+)
+from ..bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
+from ..bones.dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Dict,
     OWM_ADD_Dev_Print_Selected_Bones_List,
-    OWM_ADD_Dev_Print_Selected_Bones_Set)
-from .bones.operator import OWM_ADD_UpdateArmature
-from .dev.dev_allow_select_armatures_only import \
-    OWM_ADD_Dev_Allow_Select_Armatures_Only
-from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
-from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
-from .dev.dev_print_version import OWM_ADD_PrintVersion
-from .hero_skins import (HERO_EMOTES, HERO_HIGHLIGHT_INTROS, HERO_SKINS,
-                         HERO_VICTORY_POSES)
-from .importing.op_import_animations import (OWM_ADD_ImportEmote,
-                                             OWM_ADD_ImportHighlightIntro,
-                                             OWM_ADD_ImportVictoryPose)
-from .importing.op_import_skin import OWM_ADD_ImportSkin
-from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+    OWM_ADD_Dev_Print_Selected_Bones_Set,
+)
+from ..bones.operator import OWM_ADD_UpdateArmature
+from ..dev.dev_allow_select_armatures_only import (
+    OWM_ADD_Dev_Allow_Select_Armatures_Only,
+)
+from ..dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+from ..dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
+from ..dev.dev_print_version import OWM_ADD_PrintVersion
+from ..organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+from .assets import HERO_EMOTES, HERO_HIGHLIGHT_INTROS, HERO_SKINS, HERO_VICTORY_POSES
+from .op_import_animations import (
+    OWM_ADD_ImportEmote,
+    OWM_ADD_ImportHighlightIntro,
+    OWM_ADD_ImportVictoryPose,
+)
+from .op_import_skin import OWM_ADD_ImportSkin
 
 
-class OWM_ADD_PT_PanelUI(bpy.types.Panel):
+class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
     bl_category = "OWM Additions"
-    bl_label = "Update OWM Imports"
-    bl_idname = "OWM_ADD_PT_PanelUI"
+    bl_label = "Import OW Assets"
+    bl_idname = "OWM_ADD_PT_ImportPanel"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     # bl_context = "objectmode"
     # bl_options = {"DEFAULT_CLOSED"}
-
-    # @classmethod
-    # def poll(cls, context: Context) -> bool:
-    #     if "owm.skeleton.model" in bpy.context.active_object.keys():
-    #         return True
-
-    #     if "owm.skeleton.name" in bpy.context.active_object.keys():
-    #         return True
-
-    #     return False
 
     def draw(self, context: Context) -> None:
         col = self.layout.column()
@@ -48,18 +43,6 @@ class OWM_ADD_PT_PanelUI(bpy.types.Panel):
         self._draw_hero_search(col, context)
         self._draw_skin_search(col, context)
         col.operator(OWM_ADD_ImportSkin.bl_idname, icon="IMPORT")
-
-        col.separator()
-
-        col.operator(
-            OWM_ADD_UpdateArmature.bl_idname,
-            icon="ARMATURE_DATA",
-        )
-
-        col.operator(
-            OWM_ADD_Organize_Hero_Objects.bl_idname,
-            icon="OUTLINER_COLLECTION",
-        )
 
         col.separator()
         self._draw_victory_pose_search(col, context)
@@ -178,6 +161,39 @@ class OWM_ADD_PT_PanelUI(bpy.types.Panel):
         )
 
 
+class OWM_ADD_PT_OrganizePanel(bpy.types.Panel):
+    bl_category = "OWM Additions"
+    bl_label = "Organize OW Imports"
+    bl_idname = "OWM_ADD_PT_OrganizePanel"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    # bl_context = "objectmode"
+    # bl_options = {"DEFAULT_CLOSED"}
+
+    # @classmethod
+    # def poll(cls, context: Context) -> bool:
+    #     if "owm.skeleton.model" in bpy.context.active_object.keys():
+    #         return True
+
+    #     if "owm.skeleton.name" in bpy.context.active_object.keys():
+    #         return True
+
+    #     return False
+
+    def draw(self, context: Context) -> None:
+        col = self.layout.column()
+
+        col.operator(
+            OWM_ADD_UpdateArmature.bl_idname,
+            icon="ARMATURE_DATA",
+        )
+
+        col.operator(
+            OWM_ADD_Organize_Hero_Objects.bl_idname,
+            icon="OUTLINER_COLLECTION",
+        )
+
+
 class OWM_ADD_PT_DevPanelUI(bpy.types.Panel):
     bl_category = "OWM Additions"
     bl_label = "Dev Only"
@@ -271,4 +287,4 @@ class OWM_ADD_PT_DevPanelUI(bpy.types.Panel):
 
 
 # bpy.utils.register_class(OWN_ADD_BasePanel)
-# bpy.utils.register_class(OWM_ADD_PT_PanelUI)
+# bpy.utils.register_class(OWM_ADD_PT_ImportPanel)

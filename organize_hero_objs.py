@@ -3,7 +3,7 @@ from typing import Optional
 import bpy
 from bpy.types import Armature, Collection, Context, Object
 
-from .hero_skins_prop import get_context_hero_name, get_context_skin_name
+from .importing.asset_prop import get_context_hero_name, get_context_skin_name
 
 
 class OWM_ADD_Organize_Hero_Objects(bpy.types.Operator):

@@ -6,7 +6,7 @@ import bpy
 from bpy.types import Action, Context, FCurve
 from io_anim_seanim import import_seanim
 
-from ..hero_skins_prop import (
+from .asset_prop import (
     get_context_emote_name,
     get_context_hero_name,
     get_context_highlight_intro_name,

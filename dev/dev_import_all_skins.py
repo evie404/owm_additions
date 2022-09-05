@@ -5,7 +5,7 @@ from typing import List, Set
 import bpy
 from bpy.types import Context
 
-from ..hero_skins_prop import get_context_hero_name
+from ..importing.asset_prop import get_context_hero_name
 from ..paths.skin import entity_paths
 
 

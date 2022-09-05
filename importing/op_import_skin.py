@@ -3,7 +3,7 @@ from typing import List, Optional, Set
 import bpy
 from bpy.types import Context, LayerCollection
 
-from ..hero_skins_prop import get_context_hero_name, get_context_skin_name
+from .asset_prop import get_context_hero_name, get_context_skin_name
 from ..paths.skin import entity_paths
 
 

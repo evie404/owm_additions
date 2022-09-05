@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Context
 
-from .hero_skins import HERO_SKINS
+from .assets import HERO_SKINS
 
 
 def get_context_hero_name(context: Context) -> str:
@@ -52,14 +52,16 @@ def update_hero(self, context: Context) -> None:
     set_context_highlight_intro_name(context, "")
 
 
-class OWM_Hero_Skin(bpy.types.PropertyGroup):
-    skin: bpy.props.StringProperty(default="Classic")
-
+class OWM_Asset_Prop(bpy.types.PropertyGroup):
     hero: bpy.props.StringProperty(
         default=list(HERO_SKINS.keys())[0],
         update=update_hero,
     )
 
+    skin: bpy.props.StringProperty(default="Classic")
+
     victory_pose: bpy.props.StringProperty(default="Heroic")
+
     highlight_intro: bpy.props.StringProperty()
+
     emote: bpy.props.StringProperty(default="Heroic")
