@@ -1,8 +1,6 @@
 from operator import mod
 from typing import List, Type
 
-from .importing.ui import OWM_ADD_PT_OrganizePanel
-
 reloaded = False
 
 if "bpy" in locals():
@@ -45,33 +43,29 @@ class OWM_ADD_NameProp(bpy.types.PropertyGroup):
 
 
 def all_classes() -> List[Type]:
-    from .bones.dev_find_common_bones import (
-        OWM_ADD_DevFindCommonBones,
-        OWM_ADD_DevFindFrequentBones,
-    )
-    from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
+    from .bones.dev_find_common_bones import (OWM_ADD_DevFindCommonBones,
+                                              OWM_ADD_DevFindFrequentBones)
+    from .bones.dev_hide_all_bones_except import \
+        OWM_ADD_Dev_Hide_All_Bones_Except
     from .bones.dev_print_selected_bones import (
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
-        OWM_ADD_Dev_Print_Selected_Bones_Set,
-    )
+        OWM_ADD_Dev_Print_Selected_Bones_Set)
     from .bones.operator import OWM_ADD_UpdateArmature
-    from .dev.dev_allow_select_armatures_only import (
-        OWM_ADD_Dev_Allow_Select_Armatures_Only,
-    )
+    from .dev.dev_allow_select_armatures_only import \
+        OWM_ADD_Dev_Allow_Select_Armatures_Only
     from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
     from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
     from .dev.dev_print_version import OWM_ADD_PrintVersion
     from .dev.dev_prop import OWM_ADD_Dev_Props
     from .importing.asset_prop import OWM_Asset_Prop
-    from .importing.op_import_animations import (
-        OWM_ADD_ImportEmote,
-        OWM_ADD_ImportHighlightIntro,
-        OWM_ADD_ImportVictoryPose,
-    )
+    from .importing.op_import_animations import (OWM_ADD_ImportEmote,
+                                                 OWM_ADD_ImportHighlightIntro,
+                                                 OWM_ADD_ImportVictoryPose)
     from .importing.op_import_skin import OWM_ADD_ImportSkin
     from .importing.ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_ImportPanel
-    from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+    from .organize.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+    from .organize.ui import OWM_ADD_PT_OrganizePanel
 
     return [
         OWM_ADD_NameProp,
@@ -94,8 +88,8 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Print_Selected_Bones_Set,
         OWM_ADD_PrintVersion,
         OWM_ADD_PT_ImportPanel,
-        OWM_ADD_PT_DevPanelUI,
         OWM_ADD_PT_OrganizePanel,
+        OWM_ADD_PT_DevPanelUI,
     ]
 
 
