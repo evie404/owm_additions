@@ -2,7 +2,7 @@ import bpy
 from bpy.types import Context
 
 from .bones.operator import OWM_ADD_UpdateArmature
-from .organize_hero_objs import OWM_Organize_Hero_Objects
+from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
 class OWM_ADD_PanelUI(bpy.types.Panel):
@@ -41,7 +41,7 @@ class OWM_ADD_PanelUI(bpy.types.Panel):
         )
 
         col.operator(
-            OWM_Organize_Hero_Objects.bl_idname,
+            OWM_ADD_Organize_Hero_Objects.bl_idname,
             icon="OUTLINER_COLLECTION",
         )
 

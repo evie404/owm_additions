@@ -6,7 +6,7 @@ from bpy.types import Armature, Collection, Context, Object
 from .hero_skins_prop import get_context_hero_name, get_context_skin_name
 
 
-class OWM_Organize_Hero_Objects(bpy.types.Operator):
+class OWM_ADD_Organize_Hero_Objects(bpy.types.Operator):
     bl_idname = "owm_add.org_hero_objects"
     bl_label = "Organize Hero Objects"
     # bl_description = "Clear all bones and object transformations"
