@@ -1,6 +1,6 @@
 from typing import Dict
 
-from ...bone_group_mapping import BoneGroupMapping
+from ...mappings.bone_group_mapping import BoneGroupMapping
 
 WINGED_VICTORY_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
     "Winged Victory": {

@@ -3,12 +3,9 @@ from typing import Dict, Optional
 import bpy
 from bpy.types import BoneGroup, Object, PoseBone
 
-from .bone_group_mapping import BoneGroupMapping
-from .mappings import (
-    BASE_BONE_GROUP_MAPPINGS,
-    get_hero_base_bone_mapping,
-    get_skin_bone_mapping,
-)
+from .mappings.base import BASE_BONE_GROUP_MAPPINGS
+from .mappings.bone_group_mapping import BoneGroupMapping
+from .mappings.mappings import get_hero_base_bone_mapping, get_skin_bone_mapping
 
 
 def clear_bone_groups(armature_object: Object) -> None:

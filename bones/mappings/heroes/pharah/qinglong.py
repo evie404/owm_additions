@@ -1,15 +1,9 @@
 from typing import Dict
 
-from ...bone_group_mapping import BoneGroupMapping
+from ...mappings.bone_group_mapping import BoneGroupMapping
 
-RAPTORIAN_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
-    "Raptorian": {
-        "Body Adjustments": BoneGroupMapping(
-            layers=[1],
-            bones={
-                "bone_0237": "Clavicle Adjustment R",
-            },
-        ),
+QINGLONG_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
+    "Qinglong": {
         "Hair": BoneGroupMapping(
             [19],
             {
