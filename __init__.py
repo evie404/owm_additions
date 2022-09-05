@@ -1,6 +1,4 @@
-from .operator import OWM_ADD_UpdateArmature
-from .ui import OWM_ADD_PT_UpdateArmatureUI
-from .update_bones import update_bones
+from typing import List, Type
 
 bl_info = {
     "name": "OWM Additions",
@@ -14,7 +12,6 @@ bl_info = {
     "support": "COMMUNITY",
     "category": "Import-Export",
 }
-
 
 # Script reloading (if the user calls 'Reload Scripts' from Blender)
 # https://github.com/KhronosGroup/glTF-Blender-IO/blob/04e26bef903543d08947c5a9a5fea4e787b68f17/addons/io_scene_gltf2/__init__.py#L32-L54
@@ -43,19 +40,26 @@ def reload_package(module_dict_main: dict) -> None:  # type: ignore[type-arg]
 if "bpy" in locals():
     reload_package(locals())
 
-import bpy
 
-CLASSES = (OWM_ADD_UpdateArmature, OWM_ADD_PT_UpdateArmatureUI)
+def all_classes() -> List[Type]:
+    from .operator import OWM_ADD_UpdateArmature
+    from .ui import OWM_ADD_PT_UpdateArmatureUI
+
+    return [OWM_ADD_UpdateArmature, OWM_ADD_PT_UpdateArmatureUI]
 
 
 def register():
-    for cls in CLASSES:
+    import bpy
+
+    for cls in all_classes():
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
 
 
 def unregister():
-    for cls in CLASSES:
+    import bpy
+
+    for cls in all_classes():
         print(f"unregistering {cls}...")
         bpy.utils.unregister_class(cls)
 
