@@ -3,7 +3,7 @@ from typing import Dict, Optional, Tuple
 from bpy.types import Armature, EditBone
 
 from .mappings import BASE_BONE_GROUP_MAPPINGS, get_skin_bone_mapping
-from .models.bone_group_mapping import BoneGroupMapping
+from .bone_group_mapping import BoneGroupMapping
 
 
 def clear_bone_layers(armature: Armature) -> None:

@@ -1,6 +1,6 @@
 from typing import Dict
 
-from ...models.bone_group_mapping import BoneGroupMapping
+from ...bone_group_mapping import BoneGroupMapping
 from .classic import CLASSIC_MAPPING
 from .qinglong import QINGLONG_MAPPING
 from .raptorian import RAPTORIAN_MAPPING

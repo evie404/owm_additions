@@ -3,7 +3,7 @@ from typing import Dict, Optional
 from bpy.types import Armature, EditBone
 
 from .mappings import BASE_BONE_GROUP_MAPPINGS, get_skin_bone_mapping
-from .models.bone_group_mapping import BoneGroupMapping
+from .bone_group_mapping import BoneGroupMapping
 
 
 def rename_all_bones(

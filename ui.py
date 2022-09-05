@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Context
 
-from .operator import OWM_ADD_UpdateArmature
+from .bones.operator import OWM_ADD_UpdateArmature
 from .organize_hero_objs import OWM_Organize_Hero_Objects
 
 

@@ -4,7 +4,7 @@ import bpy
 from bpy.types import BoneGroup, Object, PoseBone
 
 from .mappings import BASE_BONE_GROUP_MAPPINGS, get_skin_bone_mapping
-from .models.bone_group_mapping import BoneGroupMapping
+from .bone_group_mapping import BoneGroupMapping
 
 
 def clear_bone_groups(armature_object: Object) -> None:

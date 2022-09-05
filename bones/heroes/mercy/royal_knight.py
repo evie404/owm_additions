@@ -1,6 +1,6 @@
 from typing import Dict
 
-from ...models.bone_group_mapping import BoneGroupMapping
+from ...bone_group_mapping import BoneGroupMapping
 
 ROYAL_KNIGHT_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
     "Royal Knight": {

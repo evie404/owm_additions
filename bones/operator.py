@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Context
 
-from .hero_skins_prop import get_context_hero_name, get_context_skin_name
+from ..hero_skins_prop import get_context_hero_name, get_context_skin_name
 from .update_bones import update_bones
 
 
