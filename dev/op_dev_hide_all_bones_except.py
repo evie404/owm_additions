@@ -24,12 +24,10 @@ class OWM_ADD_Dev_Hide_All_Bones_Except(bpy.types.Operator):
 
             return {"CANCELLED"}
 
-        # disallow_select_all_non_armatures()
         # hide_all_empties()
 
         arm_objs = all_armature_objects()
 
-        # stagger_armatures(arm_objs)
         # set_bone_constraints(arm_objs)
 
         reset_bones(arm_objs[0])
@@ -90,14 +88,6 @@ def all_armature_objects() -> List[Object]:
         arm_objs.append(obj)
 
     return arm_objs
-
-
-def stagger_armatures(arm_objs: List[Object], spacing: int = 2) -> None:
-    divisor = int(math.ceil(math.sqrt(len(arm_objs))))
-
-    for i, obj in enumerate(arm_objs):
-        obj.location.x = (i % divisor) * spacing  # - divisor * spacing
-        obj.location.y = (i // divisor) * spacing  # - divisor * spacing
 
 
 def copy_armature_pose_bones(
