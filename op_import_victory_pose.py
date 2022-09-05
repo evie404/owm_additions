@@ -1,6 +1,6 @@
 import os
 from dataclasses import dataclass
-from typing import List, Set
+from typing import List, Set, Tuple
 
 import bpy
 from bpy.types import Action, Context
@@ -13,20 +13,9 @@ from owm_additions.hero_skins_prop import (
 from owm_additions.paths.animation import VICTORY_POSE_ANIMATION_TYPE, animation_paths
 
 
-@dataclass
-class JankFile:
-    name: str
-
-
-@dataclass
-class JankFiles:
-    files: List[JankFile]
-
-
 class OWM_ADD_ImportVictoryPose(bpy.types.Operator):
     bl_idname = "owm_add.import_victory_pose"
     bl_label = "Import Victory Pose"
-    # bl_description = "Clear all bones and object transformations"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
@@ -53,52 +42,13 @@ class OWM_ADD_ImportVictoryPose(bpy.types.Operator):
             return {"CANCELLED"}
 
         hero = get_context_hero_name(context)
-        victory_pose = get_context_victory_pose_name(context)
+        animation_name = get_context_victory_pose_name(context)
 
-        victory_pose_paths = animation_paths(
-            hero, VICTORY_POSE_ANIMATION_TYPE, victory_pose
+        import_set_hero_animations(
+            context, hero, VICTORY_POSE_ANIMATION_TYPE, animation_name
         )
 
-        actions: List[Action] = []
-
-        hero_actions: List[Action] = []
-        misc_actions: List[Action] = []
-
-        # fuck this
-        for filename in victory_pose_paths:
-            jank_file = JankFile(os.path.basename(filename))
-            jank_files = JankFiles([jank_file])
-
-            import_seanim.load(jank_files, context, filename)
-
-            action: Action = bpy.context.active_object.animation_data.action
-            if len(action.fcurves) > 200:
-                hero_actions.append(action)
-            else:
-                misc_actions.append(action)
-
-        if len(hero_actions) > 0:
-            bpy.context.active_object.animation_data.action = None
-
-            bpy.ops.pose.reveal()
-            bpy.ops.pose.reveal()
-            bpy.ops.pose.select_all()
-            bpy.ops.pose.transforms_clear()
-
-            bpy.context.active_object.animation_data.action = hero_actions[0]
-
-        for hero_action in hero_actions:
-            name = f"{hero} - {victory_pose}"
-
-            if len(misc_actions) > 0:
-                name = name + " (Hero)"
-
-            hero_action.name = name
-
-        for misc_action in misc_actions:
-            misc_action.name = f"{hero} - {victory_pose} (Misc)"
-
-        self.report({"INFO"}, f"Finished import {hero} ({victory_pose}).")
+        self.report({"INFO"}, f"Finished import {hero} ({animation_name}).")
 
         return {"FINISHED"}
 
@@ -111,3 +61,81 @@ class OWM_ADD_ImportVictoryPose(bpy.types.Operator):
             and "owm.skeleton.model" in context.active_object.keys()
             and "owm.skeleton.name" in context.active_object.keys()
         )
+
+
+def import_set_hero_animations(
+    context: Context, hero: str, animation_type: str, animation_name: str
+) -> None:
+    filepaths = animation_paths(hero, animation_type, animation_name)
+
+    actions = import_animations(context, filepaths)
+
+    hero_actions, _ = group_and_rename_actions(hero, animation_name, actions)
+
+    if len(hero_actions) > 0:
+        set_action(context, hero_actions[0])
+
+
+def group_and_rename_actions(
+    hero: str, animation_name: str, actions: List[Action]
+) -> Tuple[List[Action], List[Action]]:
+    hero_actions: List[Action] = []
+    misc_actions: List[Action] = []
+
+    for action in actions:
+        if len(action.fcurves) > 200:
+            hero_actions.append(action)
+        else:
+            misc_actions.append(action)
+
+    for hero_action in hero_actions:
+        name = f"{hero} - {animation_name}"
+
+        if len(misc_actions) > 0:
+            name = name + " (Hero)"
+
+        hero_action.name = name
+
+    for misc_action in misc_actions:
+        misc_action.name = f"{hero} - {animation_name} (Misc)"
+
+    return (hero_actions, misc_actions)
+
+
+def set_action(context: Context, action: Action) -> None:
+    bpy.ops.object.mode_set(mode="POSE")
+
+    context.active_object.animation_data.action = None
+
+    bpy.ops.pose.reveal()
+    bpy.ops.pose.reveal()
+    bpy.ops.pose.select_all()
+    bpy.ops.pose.transforms_clear()
+
+    context.active_object.animation_data.action = action
+
+
+@dataclass
+class JankFile:
+    name: str
+
+
+@dataclass
+class JankFiles:
+    files: List[JankFile]
+
+
+def import_animations(context: Context, filepaths: List[str]) -> List[Action]:
+    actions: List[Action] = []
+
+    # fuck this
+    for filename in filepaths:
+        jank_file = JankFile(os.path.basename(filename))
+        jank_files = JankFiles([jank_file])
+
+        import_seanim.load(jank_files, context, filename)
+
+        action: Action = bpy.context.active_object.animation_data.action
+        actions.append(action)
+
+    return actions
