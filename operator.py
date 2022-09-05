@@ -1,7 +1,7 @@
 import bpy
-from bpy.props import EnumProperty
 from bpy.types import Context
 
+from .hero_skins_prop import get_context_hero_name, get_context_skin_name
 from .update_bones import update_bones
 
 
@@ -10,31 +10,6 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
     bl_label = "Update Armature"
     # bl_description = "Clear all bones and object transformations"
     bl_options = {"UNDO"}
-
-    character: EnumProperty(
-        name="Character",
-        # default="",
-        # description="Marble bias",
-        items=[
-            ("Mercy", "Mercy", "", 0),
-            ("Pharah", "Pharah", "", 1),
-        ],
-    )
-
-    skin: EnumProperty(
-        name="Skin",
-        # default="",
-        # description="Marble bias",
-        items=[
-            ("Atlantic", "Atlantic", "", 0),
-            # ("Qinglong", "Qinglong", "", 0),
-            # ("Default", "Default", "", 0),
-            # ("Mercy/Zhuque", "Mercy/Zhuque", "", 1),
-            # ("Mercy/Dr. Ziegler", "Mercy/Dr. Ziegler", "", 2),
-            # ("Mercy/Atlantic", "Mercy/Atlantic", "", 3),
-            # ("Pharah", "Pharah", "", 1),
-        ],
-    )
 
     def execute(self, context: Context):
         if not bpy.context.active_object:
@@ -59,10 +34,11 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
             )
             return {"CANCELLED"}
 
-        update_bones(character=self.character, skin=self.skin)
+        hero = get_context_hero_name(context)
+        skin = get_context_skin_name(context)
 
-        self.report(
-            {"INFO"}, f"Finished updating armature with {self.character} ({self.skin})."
-        )
+        update_bones(character=hero, skin=skin)
+
+        self.report({"INFO"}, f"Finished updating armature with {hero} ({skin}).")
 
         return {"FINISHED"}

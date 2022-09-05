@@ -42,10 +42,11 @@ if "bpy" in locals():
 
 
 def all_classes() -> List[Type]:
+    from .hero_skins_prop import OWM_Hero_Skin
     from .operator import OWM_ADD_UpdateArmature
     from .ui import OWM_ADD_PT_UpdateArmatureUI
 
-    return [OWM_ADD_UpdateArmature, OWM_ADD_PT_UpdateArmatureUI]
+    return [OWM_Hero_Skin, OWM_ADD_UpdateArmature, OWM_ADD_PT_UpdateArmatureUI]
 
 
 def register():
@@ -55,6 +56,12 @@ def register():
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
 
+    from .hero_skins_prop import OWM_Hero_Skin
+
+    bpy.types.Scene.owm_additions_hero_skin = bpy.props.PointerProperty(
+        type=OWM_Hero_Skin
+    )
+
 
 def unregister():
     import bpy
@@ -62,6 +69,8 @@ def unregister():
     for cls in all_classes():
         print(f"unregistering {cls}...")
         bpy.utils.unregister_class(cls)
+
+    del bpy.types.Scene.owm_additions_hero_skin
 
 
 if __name__ == "__main__":

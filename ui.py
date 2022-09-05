@@ -25,6 +25,15 @@ class OWM_ADD_PT_UpdateArmatureUI(bpy.types.Panel):
 
     def draw(self, context: Context) -> None:
         col = self.layout.column()
+
+        col.prop(
+            context.scene.owm_additions_hero_skin,
+            "hero",
+            text="Hero",
+        )
+
+        col.prop(context.scene.owm_additions_hero_skin, "skin", text="Skin")
+
         col.operator(
             OWM_ADD_UpdateArmature.bl_idname,
             icon="ARMATURE_DATA",  # text="Landscape"
