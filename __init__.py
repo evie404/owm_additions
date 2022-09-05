@@ -1,10 +1,9 @@
 from typing import List, Type
 
-from owm_additions.dev.dev_print_version import OWM_ADD_PrintVersion
-from owm_additions.op_import_victory_pose import (
-    OWM_ADD_ImportEmote,
-    OWM_ADD_ImportHighlightIntro,
-)
+RELOADED = False
+
+if "bpy" in locals():
+    RELOADED = True
 
 bl_info = {
     "name": "OWM Additions",
@@ -21,37 +20,40 @@ bl_info = {
 
 import bpy
 
+PRELOADED_MODULES = set()
+
+
+def init():
+    # local imports to keep things neat
+    import importlib
+    from sys import modules
+
+    global PRELOADED_MODULES
+
+    # sys and importlib are ignored here too
+    PRELOADED_MODULES = set(modules.values())
+
+
+def reload():
+    import importlib
+    from sys import modules
+
+    for module in set(modules.values()) - PRELOADED_MODULES:
+        try:
+            importlib.reload(module)
+        except:
+            # there are some problems that are swept under the rug here
+            pass
+
+
+init()
+
+if RELOADED:
+    reload()
+
 
 class OWM_ADD_NameProp(bpy.types.PropertyGroup):
     name: bpy.props.StringProperty()
-
-
-# Script reloading (if the user calls 'Reload Scripts' from Blender)
-# https://github.com/KhronosGroup/glTF-Blender-IO/blob/04e26bef903543d08947c5a9a5fea4e787b68f17/addons/io_scene_gltf2/__init__.py#L32-L54
-# http://www.apache.org/licenses/LICENSE-2.0
-def reload_package(module_dict_main: dict) -> None:  # type: ignore[type-arg]
-    # Lazy import to minimize initialization before reload_package()
-    import importlib
-    from pathlib import Path
-    from typing import Any, Dict
-
-    def reload_package_recursive(
-        current_dir: Path, module_dict: Dict[str, Any]
-    ) -> None:
-        for path in current_dir.iterdir():
-            if "__init__" in str(path) or path.stem not in module_dict:
-                continue
-
-            if path.is_file() and path.suffix == ".py":
-                importlib.reload(module_dict[path.stem])
-            elif path.is_dir():
-                reload_package_recursive(path, module_dict[path.stem].__dict__)
-
-    reload_package_recursive(Path(__file__).parent, module_dict_main)
-
-
-if "bpy" in locals():
-    reload_package(locals())
 
 
 def all_classes() -> List[Type]:
@@ -73,10 +75,15 @@ def all_classes() -> List[Type]:
     )
     from owm_additions.dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
     from owm_additions.dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
+    from owm_additions.dev.dev_print_version import OWM_ADD_PrintVersion
     from owm_additions.dev.dev_prop import OWM_ADD_Dev_Props
     from owm_additions.hero_skins_prop import OWM_Hero_Skin
     from owm_additions.op_import_skin import OWM_ADD_ImportSkin
-    from owm_additions.op_import_victory_pose import OWM_ADD_ImportVictoryPose
+    from owm_additions.op_import_victory_pose import (
+        OWM_ADD_ImportEmote,
+        OWM_ADD_ImportHighlightIntro,
+        OWM_ADD_ImportVictoryPose,
+    )
     from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
     from owm_additions.ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
 
