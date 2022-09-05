@@ -56,7 +56,7 @@ def all_classes() -> List[Type]:
     from .dev.dev_prop import OWM_ADD_Dev_Props
     from .hero_skins_prop import OWM_Hero_Skin
     from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
-    from .ui import OWM_ADD_DevPanelUI, OWM_ADD_PanelUI
+    from .ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
 
     return [
         OWM_Hero_Skin,
@@ -69,8 +69,8 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
-        OWM_ADD_PanelUI,
-        OWM_ADD_DevPanelUI,
+        OWM_ADD_PT_PanelUI,
+        OWM_ADD_PT_DevPanelUI,
     ]
 
 

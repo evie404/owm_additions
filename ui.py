@@ -13,10 +13,10 @@ from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
 from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
-class OWM_ADD_PanelUI(bpy.types.Panel):
+class OWM_ADD_PT_PanelUI(bpy.types.Panel):
     bl_category = "OWM Additions"
     bl_label = "Update OWM Imports"
-    bl_idname = "OWM_ADD_PanelUI"
+    bl_idname = "OWM_ADD_PT_PanelUI"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     # bl_context = "objectmode"
@@ -54,10 +54,10 @@ class OWM_ADD_PanelUI(bpy.types.Panel):
         )
 
 
-class OWM_ADD_DevPanelUI(bpy.types.Panel):
+class OWM_ADD_PT_DevPanelUI(bpy.types.Panel):
     bl_category = "OWM Additions"
     bl_label = "Dev Only"
-    bl_idname = "OWM_ADD_DevPanelUI"
+    bl_idname = "OWM_ADD_PT_DevPanelUI"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     # bl_context = "objectmode"
@@ -116,4 +116,4 @@ class OWM_ADD_DevPanelUI(bpy.types.Panel):
 
 
 # bpy.utils.register_class(OWN_ADD_BasePanel)
-# bpy.utils.register_class(OWM_ADD_PanelUI)
+# bpy.utils.register_class(OWM_ADD_PT_PanelUI)
