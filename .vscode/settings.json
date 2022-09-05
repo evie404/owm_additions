@@ -9,6 +9,9 @@
       "pythonDiscoveryModule"
     ],
   },
+  "python.analysis.extraPaths": [
+    "..", // hack to get pylace to work
+  ],
   "search.exclude": {
     "**/__pycache__": true,
     // blender stubs
