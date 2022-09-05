@@ -3,7 +3,7 @@ from typing import Dict
 from ...models.bone_group_mapping import BoneGroupMapping
 
 AVIATOR_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
-    "Default": {
+    "Aviator": {
         "Hair": BoneGroupMapping(
             [19],
             {

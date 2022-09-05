@@ -2,8 +2,8 @@ from typing import Dict
 
 from ...models.bone_group_mapping import BoneGroupMapping
 
-DEFAULT_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
-    "Default": {
+CLASSIC_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
+    "Classic": {
         "Hair": BoneGroupMapping(
             [19],
             {
