@@ -42,8 +42,13 @@ if "bpy" in locals():
 
 
 def all_classes() -> List[Type]:
-    from .hero_skins_prop import OWM_Hero_Skin
+    from .bones.dev_print_selected_bones import (
+        OWM_ADD_Dev_Print_Selected_Bones_Dict,
+        OWM_ADD_Dev_Print_Selected_Bones_List,
+        OWM_ADD_Dev_Print_Selected_Bones_Set,
+    )
     from .bones.operator import OWM_ADD_UpdateArmature
+    from .hero_skins_prop import OWM_Hero_Skin
     from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
     from .ui import OWM_ADD_PanelUI
 
@@ -51,6 +56,9 @@ def all_classes() -> List[Type]:
         OWM_Hero_Skin,
         OWM_ADD_UpdateArmature,
         OWM_ADD_Organize_Hero_Objects,
+        OWM_ADD_Dev_Print_Selected_Bones_Dict,
+        OWM_ADD_Dev_Print_Selected_Bones_List,
+        OWM_ADD_Dev_Print_Selected_Bones_Set,
         OWM_ADD_PanelUI,
     ]
 

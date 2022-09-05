@@ -1,6 +1,11 @@
 import bpy
 from bpy.types import Context
 
+from .bones.dev_print_selected_bones import (
+    OWM_ADD_Dev_Print_Selected_Bones_Dict,
+    OWM_ADD_Dev_Print_Selected_Bones_List,
+    OWM_ADD_Dev_Print_Selected_Bones_Set,
+)
 from .bones.operator import OWM_ADD_UpdateArmature
 from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
@@ -42,6 +47,21 @@ class OWM_ADD_PanelUI(bpy.types.Panel):
 
         col.operator(
             OWM_ADD_Organize_Hero_Objects.bl_idname,
+            icon="OUTLINER_COLLECTION",
+        )
+
+        col.operator(
+            OWM_ADD_Dev_Print_Selected_Bones_Dict.bl_idname,
+            icon="OUTLINER_COLLECTION",
+        )
+
+        col.operator(
+            OWM_ADD_Dev_Print_Selected_Bones_List.bl_idname,
+            icon="OUTLINER_COLLECTION",
+        )
+
+        col.operator(
+            OWM_ADD_Dev_Print_Selected_Bones_Set.bl_idname,
             icon="OUTLINER_COLLECTION",
         )
 
