@@ -12,6 +12,10 @@ else:
         sanitize_name,
     )
 
+VICTORY_POSE_ANIMATION_TYPE = "VictoryPose"
+HIGHLIGHT_INTRO_ANIMATION_TYPE = "HighlightIntro"
+EMOTE_ANIMATION_TYPE = "Emote"
+
 
 def list_all_animations_of_hero(
     hero: str, animation_type: str, base_path: str = BASE_PATH
@@ -97,7 +101,7 @@ def animation_files_search_path(
 
 def main() -> None:
     # print(list_all_animations())
-    print(animation_paths("Mercy", "HighlightIntro", "Fortune"))
+    print(animation_paths("Mercy", EMOTE_ANIMATION_TYPE, "*"))
     # print(list_all_animations())
 
 
