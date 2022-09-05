@@ -43,35 +43,35 @@ class OWM_ADD_NameProp(bpy.types.PropertyGroup):
 
 
 def all_classes() -> List[Type]:
-    from owm_additions.bones.dev_find_common_bones import (
+    from .bones.dev_find_common_bones import (
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
     )
-    from owm_additions.bones.dev_hide_all_bones_except import (
+    from .bones.dev_hide_all_bones_except import (
         OWM_ADD_Dev_Hide_All_Bones_Except,
     )
-    from owm_additions.bones.dev_print_selected_bones import (
+    from .bones.dev_print_selected_bones import (
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
     )
-    from owm_additions.bones.operator import OWM_ADD_UpdateArmature
-    from owm_additions.dev.dev_allow_select_armatures_only import (
+    from .bones.operator import OWM_ADD_UpdateArmature
+    from .dev.dev_allow_select_armatures_only import (
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
     )
-    from owm_additions.dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
-    from owm_additions.dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
-    from owm_additions.dev.dev_print_version import OWM_ADD_PrintVersion
-    from owm_additions.dev.dev_prop import OWM_ADD_Dev_Props
-    from owm_additions.hero_skins_prop import OWM_Hero_Skin
-    from owm_additions.importing.op_import_animations import (
+    from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+    from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
+    from .dev.dev_print_version import OWM_ADD_PrintVersion
+    from .dev.dev_prop import OWM_ADD_Dev_Props
+    from .hero_skins_prop import OWM_Hero_Skin
+    from .importing.op_import_animations import (
         OWM_ADD_ImportEmote,
         OWM_ADD_ImportHighlightIntro,
         OWM_ADD_ImportVictoryPose,
     )
-    from owm_additions.importing.op_import_skin import OWM_ADD_ImportSkin
-    from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
-    from owm_additions.ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
+    from .importing.op_import_skin import OWM_ADD_ImportSkin
+    from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+    from .ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
 
     return [
         OWM_ADD_NameProp,
@@ -103,8 +103,8 @@ def register():
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
 
-    from owm_additions.dev.dev_prop import OWM_ADD_Dev_Props
-    from owm_additions.hero_skins_prop import OWM_Hero_Skin
+    from .dev.dev_prop import OWM_ADD_Dev_Props
+    from .hero_skins_prop import OWM_Hero_Skin
 
     bpy.types.Scene.owm_additions_hero_skin = bpy.props.PointerProperty(
         type=OWM_Hero_Skin

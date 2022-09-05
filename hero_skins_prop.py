@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Context
 
-from owm_additions.hero_skins import HERO_SKINS
+from .hero_skins import HERO_SKINS
 
 
 def get_context_hero_name(context: Context) -> str:

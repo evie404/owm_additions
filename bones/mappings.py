@@ -1,8 +1,8 @@
 from typing import Dict, Optional
 
-from owm_additions.bones.bone_group_mapping import BoneGroupMapping
-from owm_additions.bones.heroes.mercy.all import MERCY_MAPPING
-from owm_additions.bones.heroes.pharah.all import PHARAH_MAPPING
+from .bone_group_mapping import BoneGroupMapping
+from .heroes.mercy.all import MERCY_MAPPING
+from .heroes.pharah.all import PHARAH_MAPPING
 
 BASE_BONE_GROUP_MAPPINGS: Dict[str, BoneGroupMapping] = {
     "Body Pose": BoneGroupMapping(

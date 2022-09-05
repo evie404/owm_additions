@@ -1,38 +1,26 @@
 import bpy
 from bpy.types import Context, UILayout
 
-from owm_additions.bones.dev_find_common_bones import (
-    OWM_ADD_DevFindCommonBones,
-    OWM_ADD_DevFindFrequentBones,
-)
-from owm_additions.bones.dev_hide_all_bones_except import (
-    OWM_ADD_Dev_Hide_All_Bones_Except,
-)
-from owm_additions.bones.dev_print_selected_bones import (
+from .bones.dev_find_common_bones import (OWM_ADD_DevFindCommonBones,
+                                          OWM_ADD_DevFindFrequentBones)
+from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
+from .bones.dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Dict,
     OWM_ADD_Dev_Print_Selected_Bones_List,
-    OWM_ADD_Dev_Print_Selected_Bones_Set,
-)
-from owm_additions.bones.operator import OWM_ADD_UpdateArmature
-from owm_additions.dev.dev_allow_select_armatures_only import (
-    OWM_ADD_Dev_Allow_Select_Armatures_Only,
-)
-from owm_additions.dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
-from owm_additions.dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
-from owm_additions.dev.dev_print_version import OWM_ADD_PrintVersion
-from owm_additions.hero_skins import (
-    HERO_EMOTES,
-    HERO_HIGHLIGHT_INTROS,
-    HERO_SKINS,
-    HERO_VICTORY_POSES,
-)
-from owm_additions.importing.op_import_animations import (
-    OWM_ADD_ImportEmote,
-    OWM_ADD_ImportHighlightIntro,
-    OWM_ADD_ImportVictoryPose,
-)
-from owm_additions.importing.op_import_skin import OWM_ADD_ImportSkin
-from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+    OWM_ADD_Dev_Print_Selected_Bones_Set)
+from .bones.operator import OWM_ADD_UpdateArmature
+from .dev.dev_allow_select_armatures_only import \
+    OWM_ADD_Dev_Allow_Select_Armatures_Only
+from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
+from .dev.dev_print_version import OWM_ADD_PrintVersion
+from .hero_skins import (HERO_EMOTES, HERO_HIGHLIGHT_INTROS, HERO_SKINS,
+                         HERO_VICTORY_POSES)
+from .importing.op_import_animations import (OWM_ADD_ImportEmote,
+                                             OWM_ADD_ImportHighlightIntro,
+                                             OWM_ADD_ImportVictoryPose)
+from .importing.op_import_skin import OWM_ADD_ImportSkin
+from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
 class OWM_ADD_PT_PanelUI(bpy.types.Panel):

@@ -6,13 +6,13 @@ import bpy
 from bpy.types import Action, Context, FCurve
 from io_anim_seanim import import_seanim
 
-from owm_additions.hero_skins_prop import (
+from ..hero_skins_prop import (
     get_context_emote_name,
     get_context_hero_name,
     get_context_highlight_intro_name,
     get_context_victory_pose_name,
 )
-from owm_additions.paths.animation import (
+from ..paths.animation import (
     EMOTE_ANIMATION_TYPE,
     HIGHLIGHT_INTRO_ANIMATION_TYPE,
     VICTORY_POSE_ANIMATION_TYPE,

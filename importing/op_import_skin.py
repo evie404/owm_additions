@@ -3,8 +3,8 @@ from typing import List, Optional, Set
 import bpy
 from bpy.types import Context, LayerCollection
 
-from owm_additions.hero_skins_prop import get_context_hero_name, get_context_skin_name
-from owm_additions.paths.skin import entity_paths
+from ..hero_skins_prop import get_context_hero_name, get_context_skin_name
+from ..paths.skin import entity_paths
 
 
 class OWM_ADD_ImportSkin(bpy.types.Operator):

@@ -5,12 +5,7 @@ from typing import Dict, List, Set
 if __name__ == "__main__":
     from helpers import BASE_PATH, list_all_heroes, path_element_before, sanitize_name
 else:
-    from owm_additions.paths.helpers import (
-        BASE_PATH,
-        list_all_heroes,
-        path_element_before,
-        sanitize_name,
-    )
+    from .helpers import BASE_PATH, list_all_heroes, path_element_before, sanitize_name
 
 VICTORY_POSE_ANIMATION_TYPE = "VictoryPose"
 HIGHLIGHT_INTRO_ANIMATION_TYPE = "HighlightIntro"

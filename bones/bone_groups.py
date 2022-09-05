@@ -3,8 +3,8 @@ from typing import Dict, Optional
 import bpy
 from bpy.types import BoneGroup, Object, PoseBone
 
-from owm_additions.bones.bone_group_mapping import BoneGroupMapping
-from owm_additions.bones.mappings import (
+from .bone_group_mapping import BoneGroupMapping
+from .mappings import (
     BASE_BONE_GROUP_MAPPINGS,
     get_hero_base_bone_mapping,
     get_skin_bone_mapping,
