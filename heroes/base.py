@@ -1,0 +1,28 @@
+from typing import Dict
+
+globally_common_bones: Dict[str, str] = {
+    "bone_0001": "Ground",
+    "bone_0002": "Body Root",
+    "bone_0003": "Torso Upper",
+    "bone_0004": "Waist",
+    "bone_000D": "Shoulder L",
+    "bone_000E": "Elbow L",
+    "bone_0010": "Neck Lower",
+    "bone_0011": "Neck Upper",
+    "bone_0032": "Arm Upper Adjustment L",
+    "bone_0035": "Clavicle R",
+    "bone_0037": "Elbow R",
+    "bone_0050": "Clavicle L",
+    "bone_0053": "Torso Lower",
+    "bone_0055": "Hip L",
+    "bone_0059": "Leg L",
+    "bone_005A": "Foot L",
+    "bone_005F": "Hip R",
+    "bone_0063": "Hip R",
+    "bone_0064": "Foot R",
+    "bone_002C": "Hand Socket L 1",
+    "bone_0031": "Shoulder Adjustment L",
+    "bone_0036": "Shoulder R",
+    "bone_007D": "Head Anchor",
+    "bone_05F0": "Hair Anchor",
+}
