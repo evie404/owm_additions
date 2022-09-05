@@ -10,7 +10,7 @@ from owm_additions.hero_skins_prop import (
     get_context_hero_name,
     get_context_victory_pose_name,
 )
-from owm_additions.paths.victory_pose import animation_paths
+from owm_additions.paths.victory_pose import victory_pose_animation_paths
 
 
 @dataclass
@@ -55,7 +55,7 @@ class OWM_ADD_ImportVictoryPose(bpy.types.Operator):
         hero = get_context_hero_name(context)
         victory_pose = get_context_victory_pose_name(context)
 
-        victory_pose_paths = animation_paths(hero, victory_pose)
+        victory_pose_paths = victory_pose_animation_paths(hero, victory_pose)
 
         actions: List[Action] = []
 
