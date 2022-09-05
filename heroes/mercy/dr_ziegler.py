@@ -1,6 +1,6 @@
 from typing import Dict
 
-from ..models.bone_group_mapping import BoneGroupMapping
+from ...models.bone_group_mapping import BoneGroupMapping
 
 DR_ZIEGLER_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
     "Dr. Ziegler": {

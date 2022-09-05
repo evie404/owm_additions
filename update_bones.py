@@ -5,14 +5,15 @@ import bpy
 # from .bone_names import rename_all_bones
 from .bone_groups import assign_bone_groups, clear_bone_groups
 from .bone_layers import assign_bone_layers, clear_bone_layers
+from .bone_names import rename_all_bones
 
 
-def update_bones(character: Optional[str] = None, skin: Optional[str] = None) -> None:
+def update_bones(
+    character: Optional[str] = None,
+    skin: Optional[str] = None,
+    rename_bones: bool = False,
+) -> None:
     armobj = bpy.context.active_object
-
-    if not (armobj and armobj.type == "ARMATURE"):
-        print("no objects selected or selected object is not an armature.")
-        return
 
     for i in range(32):
         bpy.context.object.data.layers[i] = True
@@ -25,9 +26,7 @@ def update_bones(character: Optional[str] = None, skin: Optional[str] = None) ->
     clear_bone_layers(armobj.data)
     assign_bone_layers(armobj.data, character, skin)
 
-    # rename_all_bones(armobj.data, character, skin)
+    if rename_bones:
+        rename_all_bones(armobj.data, character, skin)
 
     bpy.ops.object.mode_set(mode="OBJECT")
-
-
-update_bones("Mercy", "Dr. Ziegler")
