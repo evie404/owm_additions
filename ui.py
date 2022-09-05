@@ -26,12 +26,12 @@ from owm_additions.hero_skins import (
     HERO_SKINS,
     HERO_VICTORY_POSES,
 )
-from owm_additions.op_import_skin import OWM_ADD_ImportSkin
-from owm_additions.op_import_victory_pose import (
+from owm_additions.importing.op_import_animations import (
     OWM_ADD_ImportEmote,
     OWM_ADD_ImportHighlightIntro,
     OWM_ADD_ImportVictoryPose,
 )
+from owm_additions.importing.op_import_skin import OWM_ADD_ImportSkin
 from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 

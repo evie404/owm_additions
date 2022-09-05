@@ -64,12 +64,12 @@ def all_classes() -> List[Type]:
     from owm_additions.dev.dev_print_version import OWM_ADD_PrintVersion
     from owm_additions.dev.dev_prop import OWM_ADD_Dev_Props
     from owm_additions.hero_skins_prop import OWM_Hero_Skin
-    from owm_additions.op_import_skin import OWM_ADD_ImportSkin
-    from owm_additions.op_import_victory_pose import (
+    from owm_additions.importing.op_import_animations import (
         OWM_ADD_ImportEmote,
         OWM_ADD_ImportHighlightIntro,
         OWM_ADD_ImportVictoryPose,
     )
+    from owm_additions.importing.op_import_skin import OWM_ADD_ImportSkin
     from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
     from owm_additions.ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
 
