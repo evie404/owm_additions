@@ -11,7 +11,7 @@ class OWM_ADD_PrintVersion(bpy.types.Operator):
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
-        version = "123"
+        version = "130"
 
         self.report({"INFO"}, f"Version: {version}")
 

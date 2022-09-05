@@ -1,9 +1,10 @@
+from operator import mod
 from typing import List, Type
 
-RELOADED = False
+reloaded = False
 
 if "bpy" in locals():
-    RELOADED = True
+    reloaded = True
 
 bl_info = {
     "name": "OWM Additions",
@@ -20,35 +21,20 @@ bl_info = {
 
 import bpy
 
-PRELOADED_MODULES = set()
-
-
-def init():
-    # local imports to keep things neat
-    import importlib
-    from sys import modules
-
-    global PRELOADED_MODULES
-
-    # sys and importlib are ignored here too
-    PRELOADED_MODULES = set(modules.values())
-
 
 def reload():
     import importlib
     from sys import modules
 
-    for module in set(modules.values()) - PRELOADED_MODULES:
+    for module in set(modules.values()):
         try:
-            importlib.reload(module)
+            if module.__name__.startswith("owm_additions"):
+                importlib.reload(module)
         except:
-            # there are some problems that are swept under the rug here
             pass
 
 
-init()
-
-if RELOADED:
+if reloaded:
     reload()
 
 
