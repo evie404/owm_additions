@@ -61,24 +61,29 @@ class OWM_ADD_PT_PanelUI(bpy.types.Panel):
         self._draw_skin_search(col, context)
         col.operator(OWM_ADD_ImportSkin.bl_idname, icon="IMPORT")
 
-        self._draw_victory_pose_search(col, context)
-        col.operator(OWM_ADD_ImportVictoryPose.bl_idname, icon="IMPORT")
-
-        self._draw_highlight_intro_search(col, context)
-        col.operator(OWM_ADD_ImportHighlightIntro.bl_idname, icon="IMPORT")
-
-        self._draw_emote_search(col, context)
-        col.operator(OWM_ADD_ImportEmote.bl_idname, icon="IMPORT")
+        col.separator()
 
         col.operator(
             OWM_ADD_UpdateArmature.bl_idname,
-            icon="ARMATURE_DATA",  # text="Landscape"
+            icon="ARMATURE_DATA",
         )
 
         col.operator(
             OWM_ADD_Organize_Hero_Objects.bl_idname,
             icon="OUTLINER_COLLECTION",
         )
+
+        col.separator()
+        self._draw_victory_pose_search(col, context)
+        col.operator(OWM_ADD_ImportVictoryPose.bl_idname, icon="IMPORT")
+
+        col.separator()
+        self._draw_highlight_intro_search(col, context)
+        col.operator(OWM_ADD_ImportHighlightIntro.bl_idname, icon="IMPORT")
+
+        col.separator()
+        self._draw_emote_search(col, context)
+        col.operator(OWM_ADD_ImportEmote.bl_idname, icon="IMPORT")
 
     def _draw_hero_search(self, col: UILayout, context: Context) -> None:
         id_store = bpy.context.window_manager
