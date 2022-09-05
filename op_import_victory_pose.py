@@ -61,7 +61,7 @@ class OWM_ADD_ImportAnimationBase(bpy.types.Operator):
     @classmethod
     def poll(cls, context: Context) -> bool:
         return (
-            context.mode == "OBJECT"
+            (context.mode == "OBJECT" or context.mode == "POSE")
             and context.active_object
             and context.active_object.type == "ARMATURE"
             and "owm.skeleton.model" in context.active_object.keys()
