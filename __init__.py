@@ -45,24 +45,24 @@ class OWM_ADD_NameProp(bpy.types.PropertyGroup):
 
 
 def all_classes() -> List[Type]:
-    from .bones.operator import OWM_ADD_UpdateArmature
-    from .dev.dev_allow_select_armatures_only import (
+    from .bones.op_update_armature import OWM_ADD_UpdateArmature
+    from .dev.op_dev_allow_select_armatures_only import (
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
     )
-    from .dev.dev_find_common_bones import (
+    from .dev.op_dev_find_common_bones import (
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
     )
-    from .dev.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
-    from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
-    from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
-    from .dev.dev_print_selected_bones import (
+    from .dev.op_dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
+    from .dev.op_dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+    from .dev.op_dev_import_all_skins import OWM_ADD_DevImportAllSkins
+    from .dev.op_dev_print_selected_bones import (
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
     )
-    from .dev.dev_print_version import OWM_ADD_PrintVersion
-    from .dev.dev_prop import OWM_ADD_Dev_Props
+    from .dev.op_dev_print_version import OWM_ADD_PrintVersion
+    from .dev.op_dev_prop import OWM_ADD_Dev_Props
     from .importing.asset_prop import OWM_Asset_Prop
     from .importing.op_import_animations import (
         OWM_ADD_ImportEmote,
@@ -71,7 +71,7 @@ def all_classes() -> List[Type]:
     )
     from .importing.op_import_skin import OWM_ADD_ImportSkin
     from .importing.ui import OWM_ADD_PT_ImportPanel
-    from .organize.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+    from .organize.op_organize_hero_objs import OWM_ADD_Organize_Hero_Objects
     from .organize.ui import OWM_ADD_PT_OrganizePanel
 
     return [
@@ -105,7 +105,7 @@ def register():
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
 
-    from .dev.dev_prop import OWM_ADD_Dev_Props
+    from .dev.op_dev_prop import OWM_ADD_Dev_Props
     from .importing.asset_prop import OWM_Asset_Prop
 
     bpy.types.Scene.owm_additions_import_assets = bpy.props.PointerProperty(

@@ -1,9 +1,9 @@
 import bpy
 from bpy.types import Context, UILayout
 
-from ..bones.operator import OWM_ADD_UpdateArmature
+from ..bones.op_update_armature import OWM_ADD_UpdateArmature
 from ..importing.assets import HERO_SKINS
-from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+from .op_organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
 class OWM_ADD_PT_OrganizePanel(bpy.types.Panel):
