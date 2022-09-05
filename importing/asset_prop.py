@@ -5,43 +5,43 @@ from .assets import HERO_SKINS
 
 
 def get_context_hero_name(context: Context) -> str:
-    return context.scene.owm_additions_hero_skin.hero
+    return context.scene.owm_additions_import_assets.hero
 
 
 def set_context_hero_name(context: Context, hero: str) -> None:
-    context.scene.owm_additions_hero_skin.hero = hero
+    context.scene.owm_additions_import_assets.hero = hero
 
 
 def get_context_skin_name(context: Context) -> str:
-    return context.scene.owm_additions_hero_skin.skin
+    return context.scene.owm_additions_import_assets.skin
 
 
 def set_context_skin_name(context: Context, skin: str) -> None:
-    context.scene.owm_additions_hero_skin.skin = skin
+    context.scene.owm_additions_import_assets.skin = skin
 
 
 def get_context_victory_pose_name(context: Context) -> str:
-    return context.scene.owm_additions_hero_skin.victory_pose
+    return context.scene.owm_additions_import_assets.victory_pose
 
 
 def set_context_victory_pose_name(context: Context, victory_pose: str) -> None:
-    context.scene.owm_additions_hero_skin.victory_pose = victory_pose
+    context.scene.owm_additions_import_assets.victory_pose = victory_pose
 
 
 def get_context_highlight_intro_name(context: Context) -> str:
-    return context.scene.owm_additions_hero_skin.highlight_intro
+    return context.scene.owm_additions_import_assets.highlight_intro
 
 
 def set_context_highlight_intro_name(context: Context, highlight_intro: str) -> None:
-    context.scene.owm_additions_hero_skin.highlight_intro = highlight_intro
+    context.scene.owm_additions_import_assets.highlight_intro = highlight_intro
 
 
 def get_context_emote_name(context: Context) -> str:
-    return context.scene.owm_additions_hero_skin.emote
+    return context.scene.owm_additions_import_assets.emote
 
 
 def set_context_emote_name(context: Context, emote: str) -> None:
-    context.scene.owm_additions_hero_skin.emote = emote
+    context.scene.owm_additions_import_assets.emote = emote
 
 
 def update_hero(self, context: Context) -> None:

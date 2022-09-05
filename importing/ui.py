@@ -67,7 +67,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
             item.name = name
 
         col.prop_search(
-            context.scene.owm_additions_hero_skin,
+            context.scene.owm_additions_import_assets,
             "hero",
             id_store,
             "owm_additions_hero_options",
@@ -80,7 +80,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
 
         owm_additions_skin_options.clear()
 
-        hero = context.scene.owm_additions_hero_skin.hero
+        hero = context.scene.owm_additions_import_assets.hero
         skins = HERO_SKINS.get(hero, [])
 
         for name in skins:
@@ -88,7 +88,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
             item.name = name
 
         col.prop_search(
-            context.scene.owm_additions_hero_skin,
+            context.scene.owm_additions_import_assets,
             "skin",
             id_store,
             "owm_additions_skin_options",
@@ -101,7 +101,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
 
         owm_additions_victory_pose_options.clear()
 
-        hero = context.scene.owm_additions_hero_skin.hero
+        hero = context.scene.owm_additions_import_assets.hero
         victory_poses = HERO_VICTORY_POSES.get(hero, [])
 
         for name in victory_poses:
@@ -109,7 +109,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
             item.name = name
 
         col.prop_search(
-            context.scene.owm_additions_hero_skin,
+            context.scene.owm_additions_import_assets,
             "victory_pose",
             id_store,
             "owm_additions_victory_pose_options",
@@ -124,7 +124,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
 
         owm_additions_highlight_intro_options.clear()
 
-        hero = context.scene.owm_additions_hero_skin.hero
+        hero = context.scene.owm_additions_import_assets.hero
         highlight_intros = HERO_HIGHLIGHT_INTROS.get(hero, [])
 
         for name in highlight_intros:
@@ -132,7 +132,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
             item.name = name
 
         col.prop_search(
-            context.scene.owm_additions_hero_skin,
+            context.scene.owm_additions_import_assets,
             "highlight_intro",
             id_store,
             "owm_additions_highlight_intro_options",
@@ -145,7 +145,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
 
         owm_additions_emote_options.clear()
 
-        hero = context.scene.owm_additions_hero_skin.hero
+        hero = context.scene.owm_additions_import_assets.hero
         emotes = HERO_EMOTES.get(hero, [])
 
         for name in emotes:
@@ -153,7 +153,7 @@ class OWM_ADD_PT_ImportPanel(bpy.types.Panel):
             item.name = name
 
         col.prop_search(
-            context.scene.owm_additions_hero_skin,
+            context.scene.owm_additions_import_assets,
             "emote",
             id_store,
             "owm_additions_emote_options",
