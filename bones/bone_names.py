@@ -2,8 +2,8 @@ from typing import Dict, Optional
 
 from bpy.types import Armature, EditBone
 
-from .bone_group_mapping import BoneGroupMapping
-from .mappings import (
+from owm_additions.bones.bone_group_mapping import BoneGroupMapping
+from owm_additions.bones.mappings import (
     BASE_BONE_GROUP_MAPPINGS,
     get_hero_base_bone_mapping,
     get_skin_bone_mapping,

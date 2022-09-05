@@ -2,10 +2,10 @@ from typing import Optional
 
 import bpy
 
-# from .bone_names import rename_all_bones
-from .bone_groups import assign_bone_groups, clear_bone_groups
-from .bone_layers import assign_bone_layers, clear_bone_layers
-from .bone_names import rename_all_bones
+# from owm_additions.bones.bone_names import rename_all_bones
+from owm_additions.bones.bone_groups import assign_bone_groups, clear_bone_groups
+from owm_additions.bones.bone_layers import assign_bone_layers, clear_bone_layers
+from owm_additions.bones.bone_names import rename_all_bones
 
 
 def update_bones(

@@ -2,8 +2,7 @@ from typing import Dict, Set
 
 import bpy
 from bpy.types import Armature, Context
-
-from .mappings import BASE_BONE_GROUP_MAPPINGS
+from owm_additions.bones.mappings import BASE_BONE_GROUP_MAPPINGS
 
 
 class OWM_ADD_DevFindCommonBones(bpy.types.Operator):

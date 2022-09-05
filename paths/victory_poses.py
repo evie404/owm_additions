@@ -2,7 +2,12 @@ import glob
 import os
 from typing import Dict, List, Set
 
-from .helpers import BASE_PATH, list_all_heroes, path_element_before, sanitize_name
+from owm_additions.paths.helpers import (
+    BASE_PATH,
+    list_all_heroes,
+    path_element_before,
+    sanitize_name,
+)
 
 
 def list_all_victory_poses_of_hero(

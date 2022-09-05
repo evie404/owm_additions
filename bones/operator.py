@@ -1,8 +1,7 @@
 import bpy
 from bpy.types import Context
-
-from ..hero_skins_prop import get_context_hero_name, get_context_skin_name
-from .update_bones import update_bones
+from owm_additions.bones.update_bones import update_bones
+from owm_additions.hero_skins_prop import get_context_hero_name, get_context_skin_name
 
 
 class OWM_ADD_UpdateArmature(bpy.types.Operator):

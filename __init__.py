@@ -49,27 +49,29 @@ if "bpy" in locals():
 
 
 def all_classes() -> List[Type]:
-    from .bones.dev_find_common_bones import (
+    from owm_additions.bones.dev_find_common_bones import (
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
     )
-    from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
-    from .bones.dev_print_selected_bones import (
+    from owm_additions.bones.dev_hide_all_bones_except import (
+        OWM_ADD_Dev_Hide_All_Bones_Except,
+    )
+    from owm_additions.bones.dev_print_selected_bones import (
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
     )
-    from .bones.operator import OWM_ADD_UpdateArmature
-    from .dev.dev_allow_select_armatures_only import (
+    from owm_additions.bones.operator import OWM_ADD_UpdateArmature
+    from owm_additions.dev.dev_allow_select_armatures_only import (
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
     )
-    from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
-    from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
-    from .dev.dev_prop import OWM_ADD_Dev_Props
-    from .hero_skins_prop import OWM_Hero_Skin
-    from .op_import_skin import OWM_ADD_ImportSkin
-    from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
-    from .ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
+    from owm_additions.dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+    from owm_additions.dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
+    from owm_additions.dev.dev_prop import OWM_ADD_Dev_Props
+    from owm_additions.hero_skins_prop import OWM_Hero_Skin
+    from owm_additions.op_import_skin import OWM_ADD_ImportSkin
+    from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+    from owm_additions.ui import OWM_ADD_PT_DevPanelUI, OWM_ADD_PT_PanelUI
 
     return [
         OWM_ADD_NameProp,
@@ -97,8 +99,8 @@ def register():
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
 
-    from .dev.dev_prop import OWM_ADD_Dev_Props
-    from .hero_skins_prop import OWM_Hero_Skin
+    from owm_additions.dev.dev_prop import OWM_ADD_Dev_Props
+    from owm_additions.hero_skins_prop import OWM_Hero_Skin
 
     bpy.types.Scene.owm_additions_hero_skin = bpy.props.PointerProperty(
         type=OWM_Hero_Skin

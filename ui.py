@@ -1,23 +1,27 @@
 import bpy
 from bpy.types import Context, UILayout
 
-from .bones.dev_find_common_bones import (
+from owm_additions.bones.dev_find_common_bones import (
     OWM_ADD_DevFindCommonBones,
     OWM_ADD_DevFindFrequentBones,
 )
-from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
-from .bones.dev_print_selected_bones import (
+from owm_additions.bones.dev_hide_all_bones_except import (
+    OWM_ADD_Dev_Hide_All_Bones_Except,
+)
+from owm_additions.bones.dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Dict,
     OWM_ADD_Dev_Print_Selected_Bones_List,
     OWM_ADD_Dev_Print_Selected_Bones_Set,
 )
-from .bones.operator import OWM_ADD_UpdateArmature
-from .dev.dev_allow_select_armatures_only import OWM_ADD_Dev_Allow_Select_Armatures_Only
-from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
-from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
-from .hero_skins import HERO_SKINS
-from .op_import_skin import OWM_ADD_ImportSkin
-from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
+from owm_additions.bones.operator import OWM_ADD_UpdateArmature
+from owm_additions.dev.dev_allow_select_armatures_only import (
+    OWM_ADD_Dev_Allow_Select_Armatures_Only,
+)
+from owm_additions.dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+from owm_additions.dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
+from owm_additions.hero_skins import HERO_SKINS
+from owm_additions.op_import_skin import OWM_ADD_ImportSkin
+from owm_additions.organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
 class OWM_ADD_PT_PanelUI(bpy.types.Panel):
