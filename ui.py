@@ -11,7 +11,7 @@ class OWM_ADD_PanelUI(bpy.types.Panel):
     bl_idname = "OWM_ADD_PanelUI"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_context = "objectmode"
+    # bl_context = "objectmode"
     # bl_options = {"DEFAULT_CLOSED"}
 
     # @classmethod

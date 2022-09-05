@@ -46,7 +46,8 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
     @classmethod
     def poll(cls, context: Context) -> bool:
         return (
-            context.active_object
+            context.mode == "OBJECT"
+            and context.active_object
             and context.active_object.type == "ARMATURE"
             and "owm.skeleton.model" in context.active_object.keys()
             and "owm.skeleton.name" in context.active_object.keys()

@@ -38,14 +38,15 @@ class OWM_ADD_Organize_Hero_Objects(bpy.types.Operator):
 
         return {"FINISHED"}
 
-    # @classmethod
-    # def poll(cls, context: Context) -> bool:
-    #     return (
-    #         context.active_object
-    #         and context.active_object.type == "ARMATURE"
-    #         and "owm.skeleton.model" in context.active_object.keys()
-    #         and "owm.skeleton.name" in context.active_object.keys()
-    #     )
+    @classmethod
+    def poll(cls, context: Context) -> bool:
+        return context.mode == "OBJECT"
+        # return (
+        #     context.active_object
+        #     and context.active_object.type == "ARMATURE"
+        #     and "owm.skeleton.model" in context.active_object.keys()
+        #     and "owm.skeleton.name" in context.active_object.keys()
+        # )
 
 
 def find_root(context: Context) -> Optional[Object]:
