@@ -2,14 +2,19 @@ from typing import Dict, Optional
 
 from bpy.types import Armature, EditBone
 
-from .mappings import BASE_BONE_GROUP_MAPPINGS, get_skin_bone_mapping
 from .bone_group_mapping import BoneGroupMapping
+from .mappings import (
+    BASE_BONE_GROUP_MAPPINGS,
+    get_hero_base_bone_mapping,
+    get_skin_bone_mapping,
+)
 
 
 def rename_all_bones(
     armature: Armature, character: Optional[str] = None, skin: Optional[str] = None
 ) -> None:
     rename_bones(armature, BASE_BONE_GROUP_MAPPINGS)
+    rename_bones(armature, get_hero_base_bone_mapping(character))
     rename_bones(armature, get_skin_bone_mapping(character, skin))
 
 

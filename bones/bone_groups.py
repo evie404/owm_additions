@@ -3,8 +3,12 @@ from typing import Dict, Optional
 import bpy
 from bpy.types import BoneGroup, Object, PoseBone
 
-from .mappings import BASE_BONE_GROUP_MAPPINGS, get_skin_bone_mapping
 from .bone_group_mapping import BoneGroupMapping
+from .mappings import (
+    BASE_BONE_GROUP_MAPPINGS,
+    get_hero_base_bone_mapping,
+    get_skin_bone_mapping,
+)
 
 
 def clear_bone_groups(armature_object: Object) -> None:
@@ -24,6 +28,7 @@ def assign_bone_groups(
         pose_bone.bone_group = ungrouped
 
     assign_bone_group(armature_object, BASE_BONE_GROUP_MAPPINGS)
+    assign_bone_group(armature_object, get_hero_base_bone_mapping(character))
     assign_bone_group(armature_object, get_skin_bone_mapping(character, skin))
 
     bpy.ops.pose.group_sort()
