@@ -26,10 +26,12 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
         # default="",
         # description="Marble bias",
         items=[
-            # ("Dr. Ziegler", "Default", "", 0),
-            # ("Zhuque", "Zhuque", "", 0),
+            ("Atlantic", "Atlantic", "", 0),
             # ("Qinglong", "Qinglong", "", 0),
-            ("Default", "Default", "", 0),
+            # ("Default", "Default", "", 0),
+            # ("Mercy/Zhuque", "Mercy/Zhuque", "", 1),
+            # ("Mercy/Dr. Ziegler", "Mercy/Dr. Ziegler", "", 2),
+            # ("Mercy/Atlantic", "Mercy/Atlantic", "", 3),
             # ("Pharah", "Pharah", "", 1),
         ],
     )
