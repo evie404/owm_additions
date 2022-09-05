@@ -7,6 +7,8 @@ from .bones.dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Set,
 )
 from .bones.operator import OWM_ADD_UpdateArmature
+from .dev.dev_allow_select_armatures_only import OWM_ADD_Dev_Allow_Select_Armatures_Only
+from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
 from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
 
@@ -86,6 +88,12 @@ class OWM_ADD_DevPanelUI(bpy.types.Panel):
         col.operator(
             OWM_ADD_Dev_Print_Selected_Bones_Set.bl_idname,
             icon="CONSOLE",
+        )
+
+        col.operator(OWM_ADD_Dev_Hide_All_Empties.bl_idname, icon="EMPTY_DATA")
+
+        col.operator(
+            OWM_ADD_Dev_Allow_Select_Armatures_Only.bl_idname, icon="RESTRICT_SELECT_ON"
         )
 
 

@@ -50,6 +50,10 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Print_Selected_Bones_Set,
     )
     from .bones.operator import OWM_ADD_UpdateArmature
+    from .dev.dev_allow_select_armatures_only import (
+        OWM_ADD_Dev_Allow_Select_Armatures_Only,
+    )
+    from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
     from .hero_skins_prop import OWM_Hero_Skin
     from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
     from .ui import OWM_ADD_PanelUI
@@ -58,6 +62,8 @@ def all_classes() -> List[Type]:
         OWM_Hero_Skin,
         OWM_ADD_UpdateArmature,
         OWM_ADD_Organize_Hero_Objects,
+        OWM_ADD_Dev_Allow_Select_Armatures_Only,
+        OWM_ADD_Dev_Hide_All_Empties,
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
