@@ -16,7 +16,7 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
         # default="",
         # description="Marble bias",
         items=[
-            ("Mercy", "Mercy", "", 0),
+            # ("Mercy", "Mercy", "", 0),
             ("Pharah", "Pharah", "", 1),
         ],
     )
@@ -26,6 +26,7 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
         # default="",
         # description="Marble bias",
         items=[
+            # ("Dr. Ziegler", "Default", "", 0),
             ("Default", "Default", "", 0),
             # ("Pharah", "Pharah", "", 1),
         ],
@@ -54,7 +55,7 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
             )
             return {"CANCELLED"}
 
-        update_bones(character=self.character)
+        update_bones(character=self.character, skin=self.skin)
 
         self.report(
             {"INFO"}, f"Finished updating armature with {self.character} ({self.skin})."
