@@ -7,7 +7,6 @@ from .op_dev_find_common_bones import (
     OWM_ADD_DevFindCommonBones,
     OWM_ADD_DevFindFrequentBones,
 )
-from .op_dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
 from .op_dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
 from .op_dev_import_all_skins import OWM_ADD_DevImportAllSkins
 from .op_dev_print_selected_bones import (
@@ -16,7 +15,10 @@ from .op_dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Set,
 )
 from .op_dev_print_version import OWM_ADD_PrintVersion
-from .op_dev_show_all_bones import OWM_ADD_Dev_Show_All_Bones
+from .op_dev_show_hide_bones import (
+    OWM_ADD_Dev_Hide_All_Bones_Except,
+    OWM_ADD_Dev_Show_All_Bones,
+)
 
 
 class OWM_ADD_PT_DevPanel(bpy.types.Panel):

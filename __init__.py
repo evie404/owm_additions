@@ -51,7 +51,6 @@ def all_classes() -> List[Type]:
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
     )
-    from .dev.op_dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
     from .dev.op_dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
     from .dev.op_dev_import_all_skins import OWM_ADD_DevImportAllSkins
     from .dev.op_dev_print_selected_bones import (
@@ -61,7 +60,10 @@ def all_classes() -> List[Type]:
     )
     from .dev.op_dev_print_version import OWM_ADD_PrintVersion
     from .dev.op_dev_prop import OWM_ADD_Dev_Props
-    from .dev.op_dev_show_all_bones import OWM_ADD_Dev_Show_All_Bones
+    from .dev.op_dev_show_hide_bones import (
+        OWM_ADD_Dev_Hide_All_Bones_Except,
+        OWM_ADD_Dev_Show_All_Bones,
+    )
     from .dev.ui import OWM_ADD_PT_DevPanel
     from .importing.asset_prop import OWM_Asset_Prop
     from .importing.op_import_animations import (
