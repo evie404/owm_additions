@@ -2,6 +2,7 @@ import bpy
 from bpy.types import Context
 
 from .operator import OWM_ADD_UpdateArmature
+from .organize_hero_objs import OWM_Organize_Hero_Objects
 
 
 class OWM_ADD_PT_UpdateArmatureUI(bpy.types.Panel):
@@ -11,7 +12,7 @@ class OWM_ADD_PT_UpdateArmatureUI(bpy.types.Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_context = "objectmode"
-    bl_options = {"DEFAULT_CLOSED"}
+    # bl_options = {"DEFAULT_CLOSED"}
 
     # @classmethod
     # def poll(cls, context: Context) -> bool:
@@ -37,6 +38,11 @@ class OWM_ADD_PT_UpdateArmatureUI(bpy.types.Panel):
         col.operator(
             OWM_ADD_UpdateArmature.bl_idname,
             icon="ARMATURE_DATA",  # text="Landscape"
+        )
+
+        col.operator(
+            OWM_Organize_Hero_Objects.bl_idname,
+            icon="OUTLINER_COLLECTION",
         )
 
 
