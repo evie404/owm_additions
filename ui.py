@@ -10,6 +10,7 @@ from .bones.dev_print_selected_bones import (
 from .bones.operator import OWM_ADD_UpdateArmature
 from .dev.dev_allow_select_armatures_only import OWM_ADD_Dev_Allow_Select_Armatures_Only
 from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
 from .hero_skins import HERO_SKINS
 from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
 
@@ -126,6 +127,8 @@ class OWM_ADD_PT_DevPanelUI(bpy.types.Panel):
             icon="CONSOLE",
         )
 
+        col.separator()
+
         col.operator(OWM_ADD_Dev_Hide_All_Empties.bl_idname, icon="EMPTY_DATA")
 
         col.operator(
@@ -148,6 +151,10 @@ class OWM_ADD_PT_DevPanelUI(bpy.types.Panel):
             )
 
         col.operator(OWM_ADD_Dev_Hide_All_Bones_Except.bl_idname, icon="BONE_DATA")
+
+        col.separator()
+
+        col.operator(OWM_ADD_DevImportAllSkins.bl_idname, icon="IMPORT")
 
 
 # bpy.utils.register_class(OWN_ADD_BasePanel)

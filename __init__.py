@@ -60,6 +60,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
     )
     from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+    from .dev.dev_import_all_skins import OWM_ADD_DevImportAllSkins
     from .dev.dev_prop import OWM_ADD_Dev_Props
     from .hero_skins_prop import OWM_Hero_Skin
     from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
@@ -71,6 +72,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Props,
         OWM_ADD_UpdateArmature,
         OWM_ADD_Organize_Hero_Objects,
+        OWM_ADD_DevImportAllSkins,
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
         OWM_ADD_Dev_Hide_All_Bones_Except,
         OWM_ADD_Dev_Hide_All_Empties,
