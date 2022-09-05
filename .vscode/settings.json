@@ -9,6 +9,7 @@
       "pythonDiscoveryModule"
     ],
   },
+  "python.analysis.importFormat": "relative",
   "python.analysis.extraPaths": [
     "..", // hack to get pylace to work
   ],
