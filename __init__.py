@@ -1,7 +1,5 @@
 from typing import List, Type
 
-from .ui import OWM_ADD_DevPanelUI
-
 bl_info = {
     "name": "OWM Additions",
     "author": "SushiKitty",
@@ -44,6 +42,7 @@ if "bpy" in locals():
 
 
 def all_classes() -> List[Type]:
+    from .bones.dev_hide_all_bones_except import OWM_ADD_Dev_Hide_All_Bones_Except
     from .bones.dev_print_selected_bones import (
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
@@ -54,15 +53,18 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
     )
     from .dev.dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
+    from .dev.dev_prop import OWM_ADD_Dev_Props
     from .hero_skins_prop import OWM_Hero_Skin
     from .organize_hero_objs import OWM_ADD_Organize_Hero_Objects
-    from .ui import OWM_ADD_PanelUI
+    from .ui import OWM_ADD_DevPanelUI, OWM_ADD_PanelUI
 
     return [
         OWM_Hero_Skin,
+        OWM_ADD_Dev_Props,
         OWM_ADD_UpdateArmature,
         OWM_ADD_Organize_Hero_Objects,
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
+        OWM_ADD_Dev_Hide_All_Bones_Except,
         OWM_ADD_Dev_Hide_All_Empties,
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
@@ -79,10 +81,15 @@ def register():
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
 
+    from .dev.dev_prop import OWM_ADD_Dev_Props
     from .hero_skins_prop import OWM_Hero_Skin
 
     bpy.types.Scene.owm_additions_hero_skin = bpy.props.PointerProperty(
         type=OWM_Hero_Skin
+    )
+
+    bpy.types.Scene.owm_additions_dev_props = bpy.props.PointerProperty(
+        type=OWM_ADD_Dev_Props
     )
 
 
@@ -94,6 +101,7 @@ def unregister():
         bpy.utils.unregister_class(cls)
 
     del bpy.types.Scene.owm_additions_hero_skin
+    del bpy.types.Scene.owm_additions_dev_props
 
 
 if __name__ == "__main__":
