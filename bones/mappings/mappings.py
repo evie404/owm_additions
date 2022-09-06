@@ -11,7 +11,7 @@ SKIN_SPECIFIC_GROUPS: Dict[str, Dict[str, Dict[str, BoneGroupMapping]]] = (
 
 def get_hero_base_bone_mapping(
     character: Optional[str] = None,
-) -> Dict[str, Dict[str, BoneGroupMapping]]:
+) -> Dict[str, BoneGroupMapping]:
     character_mapping = SKIN_SPECIFIC_GROUPS.get(character, {})
     skin_mapping = character_mapping.get("Base", {})
 
@@ -20,7 +20,7 @@ def get_hero_base_bone_mapping(
 
 def get_skin_bone_mapping(
     character: Optional[str] = None, skin: Optional[str] = None
-) -> Dict[str, Dict[str, BoneGroupMapping]]:
+) -> Dict[str, BoneGroupMapping]:
     character_mapping = SKIN_SPECIFIC_GROUPS.get(character, {})
     skin_mapping = character_mapping.get(skin, {})
 
