@@ -1,9 +1,11 @@
-from typing import Dict, Set
+from typing import Dict, Optional, Set
 
 import bpy
 from bpy.types import Armature, Context
 
 from ..bones.mappings.base import BASE_BONE_GROUP_MAPPINGS
+from ..bones.mappings.mappings import get_hero_base_bone_mapping
+from ..importing.asset_prop import get_context_hero_name
 
 
 class OWM_ADD_DevFindCommonBones(bpy.types.Operator):
@@ -11,8 +13,8 @@ class OWM_ADD_DevFindCommonBones(bpy.types.Operator):
     bl_label = "Find Common Bones"
 
     def execute(self, context: Context) -> Set[str]:
-        # TODO: exclude base bones
-        common_bones = find_common_bones() - all_common_bones()
+        hero = get_context_hero_name(context)
+        common_bones = find_common_bones() - all_common_bones(hero)
 
         print(f"common_bones: {set_to_dict(common_bones)}")
 
@@ -39,7 +41,8 @@ class OWM_ADD_DevFindFrequentBones(bpy.types.Operator):
         # TODO: exclude base bones
         threshold = context.scene.owm_additions_dev_props.bone_frequency_threshold
 
-        frequent_bones = find_frequent_bones(threshold) - all_common_bones()
+        hero = get_context_hero_name(context)
+        frequent_bones = find_frequent_bones(threshold) - all_common_bones(hero)
 
         print(f"frequent_bones: {set_to_dict(frequent_bones)}")
 
@@ -68,10 +71,16 @@ def find_frequent_bones(threshold: float = 0.9) -> Set[str]:
     return frequent_bones
 
 
-def all_common_bones() -> Set[str]:
+def all_common_bones(hero: Optional[str] = None) -> Set[str]:
     bones: Set[str] = set()
 
     for mapping in BASE_BONE_GROUP_MAPPINGS.values():
+        bones = bones.union(set(mapping.bones.keys()))
+
+    if not hero:
+        return bones
+
+    for mapping in get_hero_base_bone_mapping(hero).values():
         bones = bones.union(set(mapping.bones.keys()))
 
     return bones
