@@ -56,6 +56,7 @@ def all_classes() -> List[Type]:
     )
     from .dev.op_dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
     from .dev.op_dev_import_all_skins import OWM_ADD_DevImportAllSkins
+    from .dev.op_dev_print_bone_children import OWM_ADD_Dev_Print_Bone_Children_Dict
     from .dev.op_dev_print_selected_bones import (
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
@@ -100,6 +101,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Hide_All_Empties,
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
+        OWM_ADD_Dev_Print_Bone_Children_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
         OWM_ADD_Dev_Apply_Base_Mapping_To_All,
         OWM_ADD_PrintVersion,
