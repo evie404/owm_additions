@@ -14,6 +14,7 @@ from .op_dev_print_actions_bones import (
     OWM_ADD_Dev_Print_Actions_Bones,
     OWM_ADD_Dev_Print_Actions_Bones_Set,
 )
+from .op_dev_print_actions_using_bone import OWM_ADD_Dev_Print_Actions_Using_Bone
 from .op_dev_print_bone_children import OWM_ADD_Dev_Print_Bone_Children_Dict
 from .op_dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Dict,
@@ -123,6 +124,10 @@ class OWM_ADD_PT_DevPanel(bpy.types.Panel):
             )
 
         col.operator(OWM_ADD_Dev_Hide_All_Bones_Except.bl_idname, icon="BONE_DATA")
+        col.operator(
+            OWM_ADD_Dev_Print_Actions_Using_Bone.bl_idname,
+            icon="CONSOLE",
+        )
 
         col.separator()
 

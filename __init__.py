@@ -60,6 +60,9 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Print_Actions_Bones,
         OWM_ADD_Dev_Print_Actions_Bones_Set,
     )
+    from .dev.op_dev_print_actions_using_bone import (
+        OWM_ADD_Dev_Print_Actions_Using_Bone,
+    )
     from .dev.op_dev_print_bone_children import OWM_ADD_Dev_Print_Bone_Children_Dict
     from .dev.op_dev_print_selected_bones import (
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
@@ -109,6 +112,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Print_Selected_Bones_Set,
         OWM_ADD_Dev_Print_Actions_Bones,
         OWM_ADD_Dev_Print_Actions_Bones_Set,
+        OWM_ADD_Dev_Print_Actions_Using_Bone,
         OWM_ADD_Dev_Apply_Base_Mapping_To_All,
         OWM_ADD_PrintVersion,
         OWM_ADD_PT_ImportPanel,
