@@ -10,6 +10,7 @@ from .op_dev_find_common_bones import (
 )
 from .op_dev_hide_all_empties import OWM_ADD_Dev_Hide_All_Empties
 from .op_dev_import_all_skins import OWM_ADD_DevImportAllSkins
+from .op_dev_print_actions_bones import OWM_ADD_Dev_Print_Actions_Bones
 from .op_dev_print_bone_children import OWM_ADD_Dev_Print_Bone_Children_Dict
 from .op_dev_print_selected_bones import (
     OWM_ADD_Dev_Print_Selected_Bones_Dict,
@@ -63,6 +64,11 @@ class OWM_ADD_PT_DevPanel(bpy.types.Panel):
 
         col.operator(
             OWM_ADD_Dev_Print_Bone_Children_Dict.bl_idname,
+            icon="CONSOLE",
+        )
+
+        col.operator(
+            OWM_ADD_Dev_Print_Actions_Bones.bl_idname,
             icon="CONSOLE",
         )
 

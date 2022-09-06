@@ -95,9 +95,13 @@ def selected_bones_set(context: Context) -> Set[str]:
 
 
 def selected_bones_dict(context: Context) -> Dict[str, str]:
-    selected_bones: Dict[str, str] = {}
+    return str_set_to_dict(selected_bones_set(context))
 
-    for bone in selected_bones_set(context):
-        selected_bones[bone] = ""
 
-    return selected_bones
+def str_set_to_dict(s: Set[str]) -> Dict[str, str]:
+    d: Dict[str, str] = {}
+
+    for el in s:
+        d[el] = ""
+
+    return d
