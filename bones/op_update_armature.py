@@ -37,7 +37,7 @@ class OWM_ADD_UpdateArmature(bpy.types.Operator):
         hero = get_context_hero_name(context)
         skin = get_context_skin_name(context)
 
-        update_bones(character=hero, skin=skin)
+        update_bones(context, obj, hero, skin)
 
         self.report({"INFO"}, f"Finished updating armature with {hero} ({skin}).")
 

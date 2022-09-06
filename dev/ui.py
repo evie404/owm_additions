@@ -3,6 +3,7 @@ from bpy.types import Context, UILayout
 
 from ..importing.assets import HERO_SKINS
 from .op_dev_allow_select_armatures_only import OWM_ADD_Dev_Allow_Select_Armatures_Only
+from .op_dev_apply_base_mapping_to_all import OWM_ADD_Dev_Apply_Base_Mapping_To_All
 from .op_dev_find_common_bones import (
     OWM_ADD_DevFindCommonBones,
     OWM_ADD_DevFindFrequentBones,
@@ -107,6 +108,9 @@ class OWM_ADD_PT_DevPanel(bpy.types.Panel):
 
         self._draw_hero_search(col, context)
         col.operator(OWM_ADD_DevImportAllSkins.bl_idname, icon="IMPORT")
+        col.operator(
+            OWM_ADD_Dev_Apply_Base_Mapping_To_All.bl_idname, icon="ARMATURE_DATA"
+        )
 
         col.separator()
 

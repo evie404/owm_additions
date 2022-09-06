@@ -47,6 +47,9 @@ def all_classes() -> List[Type]:
     from .dev.op_dev_allow_select_armatures_only import (
         OWM_ADD_Dev_Allow_Select_Armatures_Only,
     )
+    from .dev.op_dev_apply_base_mapping_to_all import (
+        OWM_ADD_Dev_Apply_Base_Mapping_To_All,
+    )
     from .dev.op_dev_find_common_bones import (
         OWM_ADD_DevFindCommonBones,
         OWM_ADD_DevFindFrequentBones,
@@ -98,6 +101,7 @@ def all_classes() -> List[Type]:
         OWM_ADD_Dev_Print_Selected_Bones_Dict,
         OWM_ADD_Dev_Print_Selected_Bones_List,
         OWM_ADD_Dev_Print_Selected_Bones_Set,
+        OWM_ADD_Dev_Apply_Base_Mapping_To_All,
         OWM_ADD_PrintVersion,
         OWM_ADD_PT_ImportPanel,
         OWM_ADD_PT_OrganizePanel,
