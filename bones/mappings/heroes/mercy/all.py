@@ -2,6 +2,7 @@ from typing import Dict
 
 from ...bone_group_mapping import BoneGroupMapping
 from .atlantic import ATLANTIC_MAPPING
+from .base import BASE_MAPPING
 from .classic import CLASSIC_MAPPING
 from .dr_ziegler import DR_ZIEGLER_MAPPING
 from .royal_knight import ROYAL_KNIGHT_MAPPING
@@ -18,5 +19,6 @@ MERCY_MAPPING: Dict[str, Dict[str, Dict[str, BoneGroupMapping]]] = {
     | WITCH_MAPPING
     | SEOLBIM_MAPPING
     | ZHUQUE_MAPPING
-    | ROYAL_KNIGHT_MAPPING,
+    | ROYAL_KNIGHT_MAPPING
+    | BASE_MAPPING,
 }
