@@ -30,9 +30,11 @@ class OWM_ADD_Dev_Print_Bone_Children_Dict(bpy.types.Operator):
         if not bone:
             return {"FINISHED"}
 
-        children = bone_children(bone)
+        # children = bone_children(bone)
 
-        print(ordered_bones_dict(children))
+        # print(ordered_bones_dict(children))
+
+        print(root_with_children_ordered_bones_dict(bone))
 
         # print(ordered_bones_dict(selected_bones_children(context)))
 
@@ -54,6 +56,30 @@ def find_selected_bone(context: Context) -> Optional[Union[Bone, PoseBone, EditB
         return context.selected_pose_bones[0]
 
     return None
+
+
+def root_with_children_ordered_bones_dict(
+    root: Union[Bone, PoseBone, EditBone],
+    prefix: str = "",
+) -> Dict[str, str]:
+    bones_dict: Dict[str, str] = {}
+
+    if prefix == "":
+        bones_dict[root.name] = "Root"
+
+    for i, child in enumerate(root.children):
+        children = bone_children(child)
+        children_dict = ordered_bones_dict(children)
+
+        # print(children_dict)
+        # print(type(children_dict))
+
+        for bone_name, human_name in children_dict.items():
+            children_dict[bone_name] = f"{str(i+1)} {human_name}"
+
+        bones_dict = bones_dict | children_dict
+
+    return bones_dict
 
 
 def bone_children(
