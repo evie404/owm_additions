@@ -3,6 +3,15 @@ from typing import Dict
 from ...bone_group_mapping import BoneGroupMapping
 
 CLASSIC_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
+    # Celestial
+    # Amber
+    # Cobalt
+    # Fortune
+    # Eidgenossin
+    # Mist
+    # Orchid
+    # Verdant
+    # Snow Angel
     "Classic": {
         "Body Flaps": BoneGroupMapping(
             [24],
