@@ -87,8 +87,10 @@ def all_classes() -> List[Type]:
     from .importing.ui import OWM_ADD_PT_ImportPanel
     from .organize.op_organize_hero_objs import OWM_ADD_Organize_Hero_Objects
     from .organize.ui import OWM_ADD_PT_OrganizePanel
+    from .preferences import OWM_ADD_Preferences
 
     return [
+        OWM_ADD_Preferences,
         OWM_ADD_NameProp,
         OWM_Asset_Prop,
         OWM_ADD_Dev_Props,

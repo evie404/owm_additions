@@ -38,15 +38,11 @@ class OWM_ADD_PT_DevPanel(bpy.types.Panel):
     # bl_context = "objectmode"
     # bl_options = {"DEFAULT_CLOSED"}
 
-    # @classmethod
-    # def poll(cls, context: Context) -> bool:
-    #     if "owm.skeleton.model" in bpy.context.active_object.keys():
-    #         return True
-
-    #     if "owm.skeleton.name" in bpy.context.active_object.keys():
-    #         return True
-
-    #     return False
+    @classmethod
+    def poll(cls, context: Context) -> bool:
+        return bpy.context.preferences.addons[
+            "owm_additions"
+        ].preferences.show_development_features
 
     def draw(self, context: Context) -> None:
         col = self.layout.column()
