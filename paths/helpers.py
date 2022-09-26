@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from typing import List
 
+# for dev only outside of blender context
 BASE_PATH = os.path.join(
     "D:",
     os.sep,
@@ -11,8 +12,12 @@ BASE_PATH = os.path.join(
 )
 
 
-def list_all_heroes(base_path: str = BASE_PATH) -> List[str]:
-    search_pattern = os.path.join(base_path, "Heroes", "*")
+def base_path() -> str:
+    return BASE_PATH
+
+
+def list_all_heroes() -> List[str]:
+    search_pattern = os.path.join(base_path(), "Heroes", "*")
 
     return [path.split(os.sep)[-1] for path in glob.glob(search_pattern)]
 
