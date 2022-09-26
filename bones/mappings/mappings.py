@@ -1,4 +1,4 @@
-from typing import Dict, Optional, Set
+from typing import Dict, Optional
 
 from .bone_group_mapping import BoneGroupMapping
 from .heroes.mercy.all import MERCY_MAPPING, MERCY_MAPPING_ALIAS

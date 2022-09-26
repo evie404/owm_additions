@@ -3,7 +3,7 @@ from typing import Dict
 from ...bone_group_mapping import BoneGroupMapping
 
 ATLANTIC_MAPPING: Dict[str, Dict[str, BoneGroupMapping]] = {
-    "Atlantic": {
+    "2019 Atlantic All-Stars": {
         "Skirt": BoneGroupMapping(
             [24],
             {
