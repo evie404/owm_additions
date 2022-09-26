@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Set
 
 from ...bone_group_mapping import BoneGroupMapping
 from .atlantic import ATLANTIC_MAPPING
@@ -21,4 +21,18 @@ MERCY_MAPPING: Dict[str, Dict[str, Dict[str, BoneGroupMapping]]] = {
     | ZHUQUE_MAPPING
     | ROYAL_KNIGHT_MAPPING
     | BASE_MAPPING,
+}
+
+MERCY_MAPPING_ALIAS: Dict[str, Dict[str, str]] = {
+    "Mercy": {
+        "Celestial": "Classic",
+        "Amber": "Classic",
+        "Cobalt": "Classic",
+        "Fortune": "Classic",
+        "Eidgenossin": "Classic",
+        "Mist": "Classic",
+        "Orchid": "Classic",
+        "Verdant": "Classic",
+        "Snow Angel": "Classic",
+    }
 }
